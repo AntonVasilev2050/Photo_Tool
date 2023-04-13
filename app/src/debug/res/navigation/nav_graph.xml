@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/photosFragment">
+    <fragment
+        android:id="@+id/photosFragment"
+        android:name="com.avv2050soft.unsplashtool.presentation.PhotosFragment"
+        android:label="@string/photos_fragment_label" />
+
+    <fragment
+        android:id="@+id/collectionsFragment"
+        android:name="com.avv2050soft.unsplashtool.presentation.CollectionsFragment"
+        android:label="@string/cities_fragment_label">
+    </fragment>
+
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.avv2050soft.unsplashtool.presentation.UserFragment"
+        android:label="@string/weather_details_fragment_label" />
+
+</navigation>

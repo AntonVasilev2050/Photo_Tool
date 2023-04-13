@@ -4,4 +4,7 @@
     <string name="collections">Collections</string>
     <string name="user">User</string>
     <string name="search">Search</string>
+    <string name="photos_fragment_label">Photos</string>
+    <string name="cities_fragment_label">Cities</string>
+    <string name="weather_details_fragment_label">Weather Details</string>
 </resources>
