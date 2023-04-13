@@ -42,10 +42,10 @@ data class PhotosDbModelItem(
 //    val topicSubmissions: TopicSubmissions,
     @SerializedName("updated_at")
     val updatedAt: String,
-//    @SerializedName("urls")
-//    val urls: Urls,
-//    @SerializedName("user")
-//    val user: User,
+    @SerializedName("urls")
+    val urls: Urls,
+    @SerializedName("user")
+    val user: User,
     @SerializedName("width")
     val width: Int
 )
