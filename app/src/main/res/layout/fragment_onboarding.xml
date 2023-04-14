@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.OnboardingFragment">
+
+
+    <ImageView
+        android:id="@+id/imageViewCameras"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cameras_aa"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageViewGreen"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ellipse"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewGreetingOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="Download your favorite shots "
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewGreen"
+        app:layout_constraintStart_toStartOf="@+id/imageViewGreen"
+        app:layout_constraintTop_toTopOf="@+id/imageViewGreen" />
+
+    <TextView
+        android:id="@+id/textViewGreetingTwo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Track statistics"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewGreetingOne"
+        app:layout_constraintStart_toStartOf="@+id/textViewGreetingOne"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGreetingOne" />
+
+    <TextView
+        android:id="@+id/textViewGreetingThree"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Share with friends"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/textViewGreetingTwo"
+        app:layout_constraintStart_toStartOf="@+id/textViewGreetingTwo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGreetingTwo" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

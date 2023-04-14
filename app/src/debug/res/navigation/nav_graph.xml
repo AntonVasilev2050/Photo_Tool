@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/photosFragment">
+    app:startDestination="@id/onboardingFragment">
     <fragment
         android:id="@+id/photosFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.PhotosFragment"
@@ -18,5 +19,10 @@
         android:id="@+id/userFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.UserFragment"
         android:label="@string/user_fragment_label" />
+    <fragment
+        android:id="@+id/onboardingFragment"
+        android:name="com.avv2050soft.unsplashtool.presentation.OnboardingFragment"
+        android:label="Onboarding"
+        tools:layout="@layout/fragment_onboarding" />
 
 </navigation>
