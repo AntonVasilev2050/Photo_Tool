@@ -28,6 +28,7 @@ data class PhotosDbModelItem(
     @PrimaryKey
     @SerializedName("id")
     val id: String,
+
     @SerializedName("liked_by_user")
     val likedByUser: Boolean,
     @SerializedName("likes")

@@ -1,5 +1,6 @@
 package com.avv2050soft.unsplashtool.data.api
 
+import com.avv2050soft.unsplashtool.data.db.models.PhotosDbModelItem
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -12,14 +13,15 @@ interface UnsplashApi {
     @GET("photos/")
     suspend fun getPhotos(
         @Query("client_id") clientId: String = CLIENT_ID
-    )
+    ): List<PhotosDbModelItem>
 
-    companion object{
+    companion object {
         private const val CLIENT_ID = "jDzfFlMFcQB6Z7z-7bbQsa6Om2IcKnocUGP_ci_Srgc"
         private const val BASE_URL = "https://api.unsplash.com/"
 
         fun create(): UnsplashApi {
-            val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
+            val logger =
+                HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
 
             val client = OkHttpClient.Builder()
                 .addInterceptor(logger)
