@@ -58,10 +58,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun bindViewModel() {
-        val mainActivity = requireActivity()
-        mainActivity.findViewById<Toolbar>(R.id.toolbar).isGone = false
-        val bottomNavigationView = mainActivity.findViewById<BottomNavigationView>(R.id.bottomView)
-        bottomNavigationView.isGone = false
+
         binding.loginButton.setOnClickListener { viewModel.openLoginPage() }
         binding.buttonLogout.setOnClickListener {
             viewModel.logout()
@@ -76,7 +73,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             toast(it)
         }
         viewModel.authSuccessFlow.launchAndCollectIn(viewLifecycleOwner) {
-//            findNavController().navigate(R.id.action_onboardingFragment_to_photosFragment)
+            findNavController().navigate(R.id.photosFragment)
             Log.d(
                 "Oauth",
                 "access: ${TokenStorage.accessToken} id: ${TokenStorage.idToken} refr: ${TokenStorage.refreshToken}"

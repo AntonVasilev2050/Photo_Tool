@@ -27,15 +27,13 @@ class SplashFragment : Fragment(R.layout.fragment_splash) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         val mainActivity = requireActivity()
         mainActivity.findViewById<Toolbar>(R.id.toolbar).isGone = true
         val bottomNavigationView = mainActivity.findViewById<BottomNavigationView>(R.id.bottomView)
         bottomNavigationView.isGone = true
         binding.imageViewSplashImage.alpha = 0f
         binding.imageViewSplashImage.animate().setDuration(1500).alpha(1f).withEndAction {
-            findNavController().navigate(R.id.onboardingFragment)
-
+            findNavController().navigate(R.id.viewPagerFragment)
         }
     }
 }
