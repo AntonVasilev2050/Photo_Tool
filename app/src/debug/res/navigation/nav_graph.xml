@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/onboardingFragment">
+    app:startDestination="@id/splashFragment">
     <fragment
         android:id="@+id/photosFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.PhotosFragment"
@@ -21,8 +21,23 @@
         android:label="@string/user_fragment_label" />
     <fragment
         android:id="@+id/onboardingFragment"
-        android:name="com.avv2050soft.unsplashtool.presentation.OnboardingFragment"
+        android:name="com.avv2050soft.unsplashtool.presentation.LoginFragment"
         android:label="Onboarding"
-        tools:layout="@layout/fragment_onboarding" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_onboardingFragment_to_photosFragment"
+            app:destination="@+id/photosFragment"
+            app:popUpTo="@+id/onboardingFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.avv2050soft.unsplashtool.presentation.SplashFragment"
+        android:label=""
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_onboardingFragment"
+            app:destination="@id/onboardingFragment" />
+    </fragment>
 
 </navigation>

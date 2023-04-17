@@ -7,4 +7,17 @@
     <string name="photos_fragment_label">Photos</string>
     <string name="collections_fragment_label">Collections</string>
     <string name="user_fragment_label">User</string>
+    <string name="login_via_unsplash">login via unsplash</string>
+    <string name="share_with_friends">Share with friends</string>
+    <string name="track_statistics">Track statistics</string>
+    <string name="download_your_favorite_shots">Download your favorite shots</string>
+
+    <string name="auth_canceled">Аутентификация не выполнена</string>
+    <string name="corrupt_access_token">Corrupt access token</string>
+    <string name="get_user_info">Get user info</string>
+    <string name="get_user_error">Get user error</string>
+    <string name="logout">logout</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="splash_screen_image">Splash Screen Image</string>
 </resources>
