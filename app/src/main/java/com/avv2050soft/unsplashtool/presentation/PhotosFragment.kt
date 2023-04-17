@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.isGone
 import com.avv2050soft.unsplashtool.R
+import com.avv2050soft.unsplashtool.presentation.utils.showAppbarAndBottomView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class PhotosFragment : Fragment() {
@@ -24,10 +25,7 @@ class PhotosFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val mainActivity = requireActivity()
-        mainActivity.findViewById<Toolbar>(R.id.toolbar).isGone = false
-        val bottomNavigationView = mainActivity.findViewById<BottomNavigationView>(R.id.bottomView)
-        bottomNavigationView.isGone = false
+        showAppbarAndBottomView(requireActivity())
     }
 
 }
