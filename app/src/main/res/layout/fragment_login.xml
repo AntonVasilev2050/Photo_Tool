@@ -10,71 +10,24 @@
         android:id="@+id/imageViewLogo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:scaleType="centerCrop"
         android:src="@drawable/unsplash_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--    <ImageView-->
-    <!--        android:id="@+id/imageViewGreen"-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="220dp"-->
-    <!--        android:scaleType="fitXY"-->
-    <!--        android:src="@drawable/ellipse"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/textViewGreetingOne"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="64dp"-->
-    <!--        android:text="@string/download_your_favorite_shots"-->
-    <!--        android:textColor="@color/black"-->
-    <!--        android:textSize="24sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        app:layout_constraintEnd_toEndOf="@+id/imageViewGreen"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/imageViewGreen"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/imageViewGreen" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/textViewGreetingTwo"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:text="@string/track_statistics"-->
-    <!--        android:textColor="@color/black"-->
-    <!--        android:textSize="24sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        app:layout_constraintEnd_toEndOf="@+id/textViewGreetingOne"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/textViewGreetingOne"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/textViewGreetingOne" />-->
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/textViewGreetingThree"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        android:text="@string/share_with_friends"-->
-    <!--        android:textColor="@color/black"-->
-    <!--        android:textSize="24sp"-->
-    <!--        android:textStyle="bold"-->
-    <!--        app:layout_constraintEnd_toEndOf="@+id/textViewGreetingTwo"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/textViewGreetingTwo"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/textViewGreetingTwo" />-->
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/unsplash_logo" />
 
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/buttonLogin"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/black"
         android:text="@string/login_via_unsplash"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -96,10 +49,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Logout"
+        android:backgroundTint="@color/black"
+        android:text="@string/logout"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/loginButton" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

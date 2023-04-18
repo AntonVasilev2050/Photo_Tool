@@ -33,4 +33,6 @@
     <string name="leave_feedback_picture">Leave feedback picture</string>
     <string name="leave_feedback">Leave feedback!</string>
     <string name="finish">Finish</string>
+    <string name="skip">Skip</string>
+    <string name="unsplash_logo">Unsplash logo</string>
 </resources>

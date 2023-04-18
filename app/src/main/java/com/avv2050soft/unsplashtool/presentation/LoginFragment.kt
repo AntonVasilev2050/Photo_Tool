@@ -51,7 +51,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun bindViewModel() {
 
-        binding.loginButton.setOnClickListener { viewModel.openLoginPage() }
+        binding.buttonLogin .setOnClickListener { viewModel.openLoginPage() }
         binding.buttonLogout.setOnClickListener {
             viewModel.logout()
         }
@@ -81,7 +81,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun updateIsLoading(isLoading: Boolean) = with(binding) {
-        loginButton.isVisible = !isLoading
+        buttonLogin.isVisible = !isLoading
+        buttonLogout.isVisible = !isLoading
         loginProgress.isVisible = isLoading
     }
 
