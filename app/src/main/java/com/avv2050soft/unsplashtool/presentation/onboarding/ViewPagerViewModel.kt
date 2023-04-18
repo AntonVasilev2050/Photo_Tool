@@ -2,8 +2,14 @@ package com.avv2050soft.unsplashtool.presentation.onboarding
 
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModel
+import com.avv2050soft.unsplashtool.domain.repository.SharedPreferencesRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ViewPagerViewModel : ViewModel() {
+@HiltViewModel
+class ViewPagerViewModel @Inject constructor(
+    private val sharedPreferencesRepository: SharedPreferencesRepository
+) : ViewModel() {
 
     private var fragmentManager: FragmentManager? = null
 
@@ -18,5 +24,9 @@ class ViewPagerViewModel : ViewModel() {
     override fun onCleared() {
         super.onCleared()
         fragmentManager = null
+    }
+
+    fun saveIsOnboardingFinish(key: String, value: Boolean) {
+        sharedPreferencesRepository.saveBoolean(key, value)
     }
 }

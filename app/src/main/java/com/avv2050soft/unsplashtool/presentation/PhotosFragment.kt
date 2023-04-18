@@ -11,7 +11,9 @@ import androidx.core.view.isGone
 import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.presentation.utils.showAppbarAndBottomView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PhotosFragment : Fragment() {
 
     private lateinit var viewModel: PhotosViewModel

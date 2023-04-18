@@ -11,7 +11,9 @@ import androidx.navigation.ui.*
 import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration

@@ -19,9 +19,11 @@ import com.avv2050soft.unsplashtool.databinding.FragmentLoginBinding
 import com.avv2050soft.unsplashtool.presentation.utils.launchAndCollectIn
 import com.avv2050soft.unsplashtool.presentation.utils.toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import net.openid.appauth.AuthorizationException
 import net.openid.appauth.AuthorizationResponse
 
+@AndroidEntryPoint
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private val viewModel: LoginViewModel by viewModels()

@@ -24,10 +24,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewSkip"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/textViewSkip" />
 
     <TextView
         android:id="@+id/textViewNextFinish"
