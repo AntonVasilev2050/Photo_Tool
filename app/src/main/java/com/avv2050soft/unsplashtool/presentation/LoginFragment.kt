@@ -39,18 +39,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         if (result.resultCode == Activity.RESULT_OK) {
             viewModel.webLogoutComplete()
         } else {
-            // логаут отменен
-            // делаем complete тк github не редиректит после логаута и пользователь закрывает CCT
+
             viewModel.webLogoutComplete()
         }
     }
-
-//    override fun onCreateView(
-//        inflater: LayoutInflater, container: ViewGroup?,
-//        savedInstanceState: Bundle?
-//    ): View? {
-//        return inflater.inflate(R.layout.fragment_onboarding, container, false)
-//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -84,7 +76,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
 
         viewModel.logoutCompletedFlow.launchAndCollectIn(viewLifecycleOwner) {
-            findNavController().navigate(R.id.onboardingFragment)
+            findNavController().navigate(R.id.photosFragment)
         }
     }
 

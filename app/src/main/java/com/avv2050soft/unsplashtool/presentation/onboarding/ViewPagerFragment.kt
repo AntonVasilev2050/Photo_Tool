@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.avv2050soft.unsplashtool.R
+import com.avv2050soft.unsplashtool.databinding.FragmentViewPagerBinding
 import com.avv2050soft.unsplashtool.presentation.onboarding.screens.FirstScreen
 import com.avv2050soft.unsplashtool.presentation.onboarding.screens.ForthScreen
 import com.avv2050soft.unsplashtool.presentation.onboarding.screens.SecondScreen
@@ -16,6 +19,7 @@ import com.avv2050soft.unsplashtool.presentation.utils.hideAppbarAndBottomView
 
 class ViewPagerFragment : Fragment() {
 
+    private val binding by viewBinding(FragmentViewPagerBinding::bind)
     private val viewModel: ViewPagerViewModel by viewModels()
 
     override fun onCreateView(
@@ -46,8 +50,29 @@ class ViewPagerFragment : Fragment() {
             )
         }
 
-        val viewPager = view.findViewById<ViewPager2>(R.id.viewPager)
-        viewPager.adapter = adapter
+        binding.apply {
+            viewPager.adapter = adapter
+            textViewNextFinish.setOnClickListener {
+                when (viewPager.currentItem) {
+                    in (0 until fragmentList.lastIndex) -> viewPager.currentItem++
+
+                    else -> findNavController().navigate(R.id.loginFragment)
+                }
+            }
+            viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    when (position) {
+                        in 0 until fragmentList.lastIndex -> {
+                            textViewNextFinish.text = resources.getText(R.string.next)
+                        }
+
+                        else -> textViewNextFinish.text = resources.getText(R.string.finish)
+                    }
+                }
+            })
+        }
+
+
     }
 
     override fun onDestroy() {

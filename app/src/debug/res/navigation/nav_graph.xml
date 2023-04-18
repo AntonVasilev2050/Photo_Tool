@@ -12,7 +12,7 @@
     <fragment
         android:id="@+id/collectionsFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.CollectionsFragment"
-        android:label="@string/collections_fragment_label"></fragment>
+        android:label="@string/collections_fragment_label" />
 
     <fragment
         android:id="@+id/userFragment"
@@ -26,7 +26,7 @@
         <action
             android:id="@+id/action_loginFragment_to_photosFragment"
             app:destination="@+id/photosFragment"
-            app:popUpTo="@+id/onboardingFragment"
+            app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment

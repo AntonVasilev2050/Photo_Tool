@@ -10,6 +10,7 @@
         android:id="@+id/imageViewShare"
         android:layout_width="0dp"
         android:layout_height="300dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/share_with_friends_picture"
         android:src="@drawable/undraw_photo_sharing_re_jip7"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +22,7 @@
         android:id="@+id/textViewTitle3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:text="@string/share_with_friends_title"
         android:textSize="28sp"
         android:textStyle="bold"
@@ -34,19 +35,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:gravity="center_horizontal"
         android:text="@string/show_your_collections_to_your_friends"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle3" />
 
-    <TextView
-        android:id="@+id/textViewNext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/next"
-        android:textSize="28sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
