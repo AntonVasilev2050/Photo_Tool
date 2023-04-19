@@ -1,5 +1,9 @@
 package com.avv2050soft.unsplashtool.presentation.onboarding
 
+/*
+courtesy of: https://www.youtube.com/watch?v=COZ3j8Dwlog
+*/
+
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle

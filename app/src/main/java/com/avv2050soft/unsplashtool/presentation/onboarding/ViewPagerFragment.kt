@@ -1,5 +1,9 @@
 package com.avv2050soft.unsplashtool.presentation.onboarding
 
+/*
+courtesy of: https://www.youtube.com/watch?v=COZ3j8Dwlog
+*/
+
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
@@ -86,6 +90,9 @@ class ViewPagerFragment : Fragment(R.layout.fragment_view_pager) {
         }
     }
 
+    /*
+    courtesy of: https://www.youtube.com/watch?v=5p59XpDUKhg
+     */
     private fun setupIndicators() {
         val mainActivity = requireActivity()
         indicatorsContainer = mainActivity.findViewById(R.id.indicatorsContainer)
