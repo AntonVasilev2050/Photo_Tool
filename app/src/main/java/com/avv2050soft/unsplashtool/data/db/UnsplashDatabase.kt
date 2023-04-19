@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.avv2050soft.unsplashtool.data.db.models.PhotosDbModelItem
+import com.avv2050soft.unsplashtool.domain.models.photos.PhotosDbModelItem
 
 @Database(
     entities = [PhotosDbModelItem::class],

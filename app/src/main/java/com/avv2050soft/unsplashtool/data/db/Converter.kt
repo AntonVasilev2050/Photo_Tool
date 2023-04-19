@@ -1,10 +1,10 @@
 package com.avv2050soft.unsplashtool.data.db
 
 import androidx.room.TypeConverter
-import com.avv2050soft.unsplashtool.data.db.models.Links
-import com.avv2050soft.unsplashtool.data.db.models.PhotosDbModelItem
-import com.avv2050soft.unsplashtool.data.db.models.Urls
-import com.avv2050soft.unsplashtool.data.db.models.User
+import com.avv2050soft.unsplashtool.domain.models.photos.Links
+import com.avv2050soft.unsplashtool.domain.models.photos.PhotosDbModelItem
+import com.avv2050soft.unsplashtool.domain.models.photos.Urls
+import com.avv2050soft.unsplashtool.domain.models.photos.User
 import com.google.gson.Gson
 
 class Converter {
@@ -31,7 +31,7 @@ class Converter {
     }
 
     @TypeConverter
-    fun stringToPhotosDbModelItem(string: String): PhotosDbModelItem{
+    fun stringToPhotosDbModelItem(string: String): PhotosDbModelItem {
         val gson = Gson()
         return gson.fromJson(string, PhotosDbModelItem::class.java) as PhotosDbModelItem
     }
@@ -43,7 +43,7 @@ class Converter {
     }
 
     @TypeConverter
-    fun stringToLinks(string: String): Links{
+    fun stringToLinks(string: String): Links {
         val gson = Gson()
         return gson.fromJson(string, Links::class.java) as Links
     }

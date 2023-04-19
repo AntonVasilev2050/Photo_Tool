@@ -1,17 +1,19 @@
 package com.avv2050soft.unsplashtool.data.api
 
-import com.avv2050soft.unsplashtool.data.db.models.PhotosDbModelItem
+import com.avv2050soft.unsplashtool.domain.models.photos.PhotosDbModelItem
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.Query
 
 interface UnsplashApi {
 
     @GET("photos/")
     suspend fun getPhotos(
+        @Header("Authorization") token : String,
         @Query("client_id") clientId: String = CLIENT_ID
     ): List<PhotosDbModelItem>
 

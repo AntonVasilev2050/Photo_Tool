@@ -1,9 +1,9 @@
-package com.avv2050soft.unsplashtool.data.db.models
+package com.avv2050soft.unsplashtool.domain.models.photos
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Film(
+data class People(
     @SerializedName("approved_on")
     val approvedOn: String,
     @SerializedName("status")

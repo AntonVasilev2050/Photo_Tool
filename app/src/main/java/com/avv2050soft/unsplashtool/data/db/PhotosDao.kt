@@ -4,7 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.avv2050soft.unsplashtool.data.db.models.PhotosDbModelItem
+import com.avv2050soft.unsplashtool.domain.models.photos.PhotosDbModelItem
 
 @Dao
 interface PhotosDao {

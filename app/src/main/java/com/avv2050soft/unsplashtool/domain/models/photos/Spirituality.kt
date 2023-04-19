@@ -1,9 +1,9 @@
-package com.avv2050soft.unsplashtool.data.db.models
+package com.avv2050soft.unsplashtool.domain.models.photos
 
 
 import com.google.gson.annotations.SerializedName
 
-data class Wallpapers(
+data class Spirituality(
     @SerializedName("status")
     val status: String
 )

@@ -1,4 +1,4 @@
-package com.avv2050soft.unsplashtool.data.db.models
+package com.avv2050soft.unsplashtool.domain.models.photos
 
 
 import androidx.room.Entity
