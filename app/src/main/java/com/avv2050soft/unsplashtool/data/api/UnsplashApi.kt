@@ -22,7 +22,7 @@ interface UnsplashApi {
     companion object {
         private const val CLIENT_ID = "jDzfFlMFcQB6Z7z-7bbQsa6Om2IcKnocUGP_ci_Srgc"
         private const val BASE_URL = "https://api.unsplash.com/"
-        const val PER_PAGE = 10
+        const val PER_PAGE = 30
 
         fun create(): UnsplashApi {
             val logger =

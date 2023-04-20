@@ -1,8 +1,10 @@
 package com.avv2050soft.unsplashtool.di
 
 import android.content.Context
+import com.avv2050soft.unsplashtool.data.repository.DatabaseRepositoryImpl
 import com.avv2050soft.unsplashtool.data.repository.SharedPreferencesRepositoryImpl
 import com.avv2050soft.unsplashtool.data.repository.UnsplashRepositoryImpl
+import com.avv2050soft.unsplashtool.domain.repository.DatabaseRepository
 import com.avv2050soft.unsplashtool.domain.repository.SharedPreferencesRepository
 import com.avv2050soft.unsplashtool.domain.repository.UnsplashRepository
 import dagger.Module
@@ -15,6 +17,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 class DataModule {
+
+    @Provides
+    @Singleton
+    fun provideDatabaseRepository(@ApplicationContext context: Context) : DatabaseRepository {
+        return DatabaseRepositoryImpl(context = context)
+    }
 
     @Provides
     @Singleton

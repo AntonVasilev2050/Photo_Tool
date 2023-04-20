@@ -7,6 +7,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.data.auth.AuthRepository
+import com.avv2050soft.unsplashtool.data.repository.DatabaseRepositoryImpl
+import com.avv2050soft.unsplashtool.domain.repository.DatabaseRepository
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
@@ -21,6 +23,7 @@ import net.openid.appauth.TokenRequest
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
     private val authRepository = AuthRepository()
     private val authService: AuthorizationService = AuthorizationService(getApplication())
+    private val databaseRepository = DatabaseRepositoryImpl(application)
 
     private val openAuthPageEventChannel = Channel<Intent>(Channel.BUFFERED)
     private val toastEventChannel = Channel<Int>(Channel.BUFFERED)
@@ -88,12 +91,16 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
             authRepository.getEndSessionRequest(),
             customTabsIntent
         )
-
+        viewModelScope.launch {
+            databaseRepository.deleteAllPhotosFromDb()
+        }
         logoutPageEventChannel.trySendBlocking(logoutPageIntent)
     }
 
     fun webLogoutComplete() {
+
         authRepository.logout()
+
         logoutCompletedEventChannel.trySendBlocking(Unit)
     }
 

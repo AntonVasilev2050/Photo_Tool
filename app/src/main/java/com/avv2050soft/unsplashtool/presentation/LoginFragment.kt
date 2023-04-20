@@ -11,6 +11,9 @@ import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.avv2050soft.unsplashtool.R
@@ -20,6 +23,7 @@ import com.avv2050soft.unsplashtool.presentation.utils.launchAndCollectIn
 import com.avv2050soft.unsplashtool.presentation.utils.toast
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import net.openid.appauth.AuthorizationException
 import net.openid.appauth.AuthorizationResponse
 
@@ -53,7 +57,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private fun bindViewModel() {
 
-        binding.buttonLogin .setOnClickListener { viewModel.openLoginPage() }
+        binding.buttonLogin.setOnClickListener { viewModel.openLoginPage() }
         binding.buttonLogout.setOnClickListener {
             viewModel.logout()
         }
@@ -78,7 +82,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
 
         viewModel.logoutCompletedFlow.launchAndCollectIn(viewLifecycleOwner) {
-            findNavController().navigate(R.id.photosFragment)
+
+            findNavController().navigate(R.id.loginFragment)
         }
     }
 

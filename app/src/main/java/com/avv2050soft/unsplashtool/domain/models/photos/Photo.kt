@@ -7,21 +7,21 @@ import androidx.room.TypeConverters
 import com.avv2050soft.unsplashtool.data.db.Converter
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "photos_db_model_items")
+@Entity(tableName = "photo_items")
 @TypeConverters(Converter::class)
 data class Photo(
     @SerializedName("alt_description")
-    val altDescription: String,
+    val altDescription: String?,
     @SerializedName("blur_hash")
-    val blurHash: String,
+    val blurHash: String?,
     @SerializedName("color")
-    val color: String,
+    val color: String?,
     @SerializedName("created_at")
     val createdAt: String,
 //    @SerializedName("current_user_collections")
 //    val currentUserCollections: List<Any>,
     @SerializedName("description")
-    val description: String,
+    val description: String?,
     @SerializedName("height")
     val height: Int,
 
@@ -36,7 +36,7 @@ data class Photo(
     @SerializedName("links")
     val links: Links,
     @SerializedName("promoted_at")
-    val promotedAt: String,
+    val promotedAt: String?,
 //    @SerializedName("sponsorship")
 //    val sponsorship: Sponsorship,
 //    @SerializedName("topic_submissions")

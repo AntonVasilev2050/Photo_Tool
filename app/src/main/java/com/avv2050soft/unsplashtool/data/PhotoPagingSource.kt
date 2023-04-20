@@ -25,6 +25,7 @@ class PhotoPagingSource @Inject constructor(
                 )
             },
             onFailure = { LoadResult.Error(it) }
+
         )
     }
 
