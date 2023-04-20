@@ -2,19 +2,19 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="200dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp">
 
     <ImageView
         android:id="@+id/imageViewPhoto"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="40dp"
         android:layout_gravity="bottom"
         android:background="@color/black_transparent">
 
@@ -22,20 +22,20 @@
             android:id="@+id/textViewAuthorName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
-
             android:fontFamily="@font/roboto_bold"
             android:text="Andrew Porto"
             android:textColor="@color/white"
-            android:textSize="16sp"
+            android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
-            app:layout_constraintTop_toTopOf="@+id/imageViewAvatar" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/imageViewAvatar"
-            android:layout_width="57dp"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="4dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,9 +46,9 @@
             android:id="@+id/textViewAtLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:text=" @"
             android:textColor="@color/white"
+            android:textSize="8sp"
             app:layout_constraintStart_toStartOf="@+id/textViewAuthorName"
             app:layout_constraintTop_toBottomOf="@+id/textViewAuthorName" />
 
@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:text="andrew_porto"
             android:textColor="@color/white"
-            android:textSize="12sp"
+            android:textSize="8sp"
             app:layout_constraintStart_toEndOf="@+id/textViewAtLabel"
             app:layout_constraintTop_toTopOf="@+id/textViewAtLabel" />
 
@@ -66,7 +66,7 @@
             android:id="@+id/imageViewLikeYesNo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="2dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -76,10 +76,11 @@
             android:id="@+id/textViewTotalLikeCount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/roboto"
             android:text="1508"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewLikeYesNo"
             app:layout_constraintEnd_toStartOf="@+id/imageViewLikeYesNo"
             app:layout_constraintTop_toTopOf="@+id/imageViewLikeYesNo" />

@@ -9,7 +9,7 @@ import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "photos_db_model_items")
 @TypeConverters(Converter::class)
-data class PhotosDbModelItem(
+data class Photo(
     @SerializedName("alt_description")
     val altDescription: String,
     @SerializedName("blur_hash")
