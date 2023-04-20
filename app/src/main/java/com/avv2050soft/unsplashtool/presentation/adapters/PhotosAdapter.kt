@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.avv2050soft.unsplashtool.databinding.ItemPhotoBinding
 import com.avv2050soft.unsplashtool.domain.models.photos.Photo
+import com.avv2050soft.unsplashtool.presentation.utils.toStringWithKNotation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 
@@ -26,24 +27,23 @@ class PhotosAdapter(
             item?.let {
                 Glide
                     .with(imageViewPhoto.context)
-                    .load(it.urls.small)
+                    .load(it.urls.regular)
                     .into(imageViewPhoto)
                 Glide
                     .with(imageViewAvatar.context)
-                    .load(it.user.profileImage.small)
+                    .load(it.user.profileImage.medium)
                     .transform(CircleCrop())
                     .into(imageViewAvatar)
                 textViewAuthorName.text = item.user.name
                 textViewUserName.text = item.user.username
-                //               TODO("добавить конвертор 15000 - 15К")
-                textViewTotalLikeCount.text =
-                    item.user.totalLikes.toString()
+                val totalLikes = item.user.totalLikes.toStringWithKNotation()
+                textViewTotalLikeCount.text = totalLikes
+
             }
             root.setOnClickListener {
                 item?.let(onClick)
             }
         }
-
     }
 }
 
