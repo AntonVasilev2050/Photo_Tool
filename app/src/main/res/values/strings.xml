@@ -39,4 +39,5 @@
     <string name="photo_author_avatar">Photo author avatar</string>
     <string name="at_char">\@</string>
     <string name="likes_icon">Likes icon</string>
+    <string name="underscored_download"><u>Download</u></string>
 </resources>

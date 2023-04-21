@@ -32,7 +32,6 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
     private val photoAdapter = PhotosAdapter { photo: Photo -> onItemClick(photo) }
 
     private fun onItemClick(photo: Photo) {
-        Toast.makeText(requireContext(), "Clicked ${photo.id}", Toast.LENGTH_LONG).show()
         val photoIdBundle = Bundle()
         photoIdBundle.putString(PHOTO_ID_KEY, photo.id)
         findNavController().navigate(R.id.action_photosFragment_to_photoDetailsFragment, photoIdBundle)
