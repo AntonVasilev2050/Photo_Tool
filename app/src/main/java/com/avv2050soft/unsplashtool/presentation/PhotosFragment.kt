@@ -6,14 +6,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.paging.PagingData
-import androidx.paging.cachedIn
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.databinding.FragmentPhotosBinding
@@ -22,13 +18,11 @@ import com.avv2050soft.unsplashtool.presentation.adapters.PhotosAdapter
 import com.avv2050soft.unsplashtool.presentation.adapters.PhotosLoadStateAdapter
 import com.avv2050soft.unsplashtool.presentation.utils.showAppbarAndBottomView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.distinctUntilChanged
-import kotlinx.coroutines.flow.distinctUntilChangedBy
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
+
+const val PHOTO_ID_KEY = "photo_id_key"
 
 @AndroidEntryPoint
 class PhotosFragment : Fragment(R.layout.fragment_photos) {
@@ -39,6 +33,9 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
 
     private fun onItemClick(photo: Photo) {
         Toast.makeText(requireContext(), "Clicked ${photo.id}", Toast.LENGTH_LONG).show()
+        val photoIdBundle = Bundle()
+        photoIdBundle.putString(PHOTO_ID_KEY, photo.id)
+        findNavController().navigate(R.id.action_photosFragment_to_photoDetailsFragment, photoIdBundle)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,12 +53,13 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
 
         viewModel.pagePhotos.onEach {
             photoAdapter.submitData(it)
-            if (photoAdapter.snapshot().items.isEmpty()){
+            if (photoAdapter.snapshot().items.isEmpty()) {
                 viewModel.loadAllPhotosFromDb()
-                viewModel.photosFromDbStateFlow.collect{ listOfPhotos->
+                viewModel.photosFromDbStateFlow.collect { listOfPhotos ->
                     photoAdapter.submitData(PagingData.from(listOfPhotos))
-                    Log.d("data_test", "photoListPageDB - ${listOfPhotos.toString()}" )
-                    Toast.makeText(requireContext(), "Loaded from database", Toast.LENGTH_SHORT).show()
+                    Log.d("data_test", "photoListPageDB - ${listOfPhotos.toString()}")
+                    Toast.makeText(requireContext(), "Loaded from database", Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)

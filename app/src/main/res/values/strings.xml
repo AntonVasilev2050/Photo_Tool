@@ -35,4 +35,8 @@
     <string name="finish">Finish</string>
     <string name="skip">Skip</string>
     <string name="unsplash_logo">Unsplash logo</string>
+    <string name="photo">Photo</string>
+    <string name="photo_author_avatar">Photo author avatar</string>
+    <string name="at_char">\@</string>
+    <string name="likes_icon">Likes icon</string>
 </resources>

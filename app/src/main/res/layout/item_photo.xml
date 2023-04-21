@@ -3,15 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="300dp"
     android:layout_margin="2dp">
 
     <ImageView
         android:id="@+id/imageViewPhoto"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:contentDescription="@string/photo" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,7 +28,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="2dp"
             android:fontFamily="@font/roboto_bold"
-            android:text="Andrew Porto"
+           tools:text="Andrew Porto"
             android:textColor="@color/white"
             android:textSize="12sp"
             android:maxLines="1"
@@ -46,14 +47,15 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:srcCompat="@tools:sample/avatars" />
+            tools:srcCompat="@tools:sample/avatars"
+            android:contentDescription="@string/photo_author_avatar" />
 
         <TextView
             android:id="@+id/textViewAtLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="2dp"
-            android:text=" @"
+            android:text="@string/at_char"
             android:textColor="@color/white"
             android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +67,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
-            android:text="andrew_porto"
+            tools:text="andrew_porto"
             android:textColor="@color/white"
             android:textSize="8sp"
             android:maxLines="1"
@@ -82,7 +84,8 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/like_no" />
+            app:srcCompat="@drawable/like_no"
+            android:contentDescription="@string/likes_icon" />
 
         <TextView
             android:id="@+id/textViewTotalLikeCount"
@@ -90,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="2dp"
             android:fontFamily="@font/roboto"
-            android:text="1508"
+            tools:text="1508"
             android:textColor="@color/white"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/imageViewLikeYesNo"

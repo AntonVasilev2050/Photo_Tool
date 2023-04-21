@@ -7,7 +7,11 @@
     <fragment
         android:id="@+id/photosFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.PhotosFragment"
-        android:label="@string/photos_fragment_label" />
+        android:label="@string/photos_fragment_label" >
+        <action
+            android:id="@+id/action_photosFragment_to_photoDetailsFragment"
+            app:destination="@id/photoDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/collectionsFragment"
@@ -50,5 +54,10 @@
             android:id="@+id/action_viewPagerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/photoDetailsFragment"
+        android:name="com.avv2050soft.unsplashtool.presentation.PhotoDetailsFragment"
+        android:label="fragment_photo_details"
+        tools:layout="@layout/fragment_photo_details" />
 
 </navigation>
