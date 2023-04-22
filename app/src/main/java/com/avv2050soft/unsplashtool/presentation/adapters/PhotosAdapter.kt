@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.databinding.ItemPhotoBinding
 import com.avv2050soft.unsplashtool.domain.models.photos.Photo
 import com.avv2050soft.unsplashtool.presentation.utils.toStringWithKNotation
@@ -36,9 +37,13 @@ class PhotosAdapter(
                     .into(imageViewAvatar)
                 textViewAuthorName.text = item.user.name
                 textViewUserName.text = item.user.username
-                val totalLikes = item.user.totalLikes.toStringWithKNotation()
+                val totalLikes = item.likes.toStringWithKNotation()
                 textViewTotalLikeCount.text = totalLikes
-
+                if (item.likedByUser){
+                    imageViewLikeYesNo.setImageResource(R.drawable.like_yes)
+                }else {
+                    imageViewLikeYesNo.setImageResource(R.drawable.like_no)
+                }
             }
             root.setOnClickListener {
                 item?.let(onClick)
