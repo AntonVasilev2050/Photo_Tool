@@ -9,9 +9,8 @@
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="500dp"
         android:layout_marginStart="4dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -27,7 +26,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="60dp"
             android:layout_gravity="bottom"
             android:background="@color/black_transparent">
 
@@ -36,13 +35,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="2dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/roboto_bold"
                 android:maxLines="1"
                 android:textColor="@color/white"
-                android:textSize="12sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/imageViewAvatar"
                 app:layout_constraintTop_toTopOf="parent"
@@ -50,8 +49,8 @@
 
             <ImageView
                 android:id="@+id/imageViewAvatar"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_marginStart="2dp"
                 android:layout_marginTop="2dp"
                 android:layout_marginBottom="2dp"
@@ -68,7 +67,7 @@
                 android:layout_marginBottom="2dp"
                 android:text="@string/at_char"
                 android:textColor="@color/white"
-                android:textSize="8sp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textViewAuthorName"
                 app:layout_constraintTop_toBottomOf="@+id/textViewAuthorName" />
@@ -81,7 +80,7 @@
                 android:ellipsize="end"
                 android:maxLines="1"
                 android:textColor="@color/white"
-                android:textSize="8sp"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toStartOf="@+id/textViewTotalLikeCount"
                 app:layout_constraintStart_toEndOf="@+id/textViewAtLabel"
                 app:layout_constraintTop_toTopOf="@+id/textViewAtLabel"
@@ -89,8 +88,8 @@
 
             <ImageView
                 android:id="@+id/imageViewLikeYesNo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:layout_marginEnd="2dp"
                 android:layout_marginBottom="8dp"
                 android:contentDescription="@string/likes_icon"
@@ -105,7 +104,7 @@
                 android:layout_marginEnd="2dp"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/white"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="@+id/imageViewLikeYesNo"
                 app:layout_constraintEnd_toStartOf="@+id/imageViewLikeYesNo"
                 app:layout_constraintTop_toTopOf="@+id/imageViewLikeYesNo"

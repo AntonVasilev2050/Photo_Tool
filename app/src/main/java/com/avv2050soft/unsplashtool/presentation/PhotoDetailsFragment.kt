@@ -3,6 +3,8 @@ package com.avv2050soft.unsplashtool.presentation
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -12,6 +14,8 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.databinding.FragmentPhotoDetailsBinding
 import com.avv2050soft.unsplashtool.domain.models.photo_details.PhotoDetails
+import com.avv2050soft.unsplashtool.presentation.utils.hideAppbarAndBottomView
+import com.avv2050soft.unsplashtool.presentation.utils.showAppbarAndBottomView
 import com.avv2050soft.unsplashtool.presentation.utils.toStringWithKNotation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
@@ -27,6 +31,7 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
         super.onViewCreated(view, savedInstanceState)
 
         val photoId = arguments?.getString(PHOTO_ID_KEY)
+        hideAppbarAndBottomView(requireActivity())
 
         viewLifecycleOwner.lifecycleScope.launch {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
@@ -77,6 +82,10 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
                 textViewUserName2.text = photoDetails.user.username
             }
         }
+    }
 
+    override fun onDestroy() {
+        showAppbarAndBottomView(requireActivity())
+        super.onDestroy()
     }
 }

@@ -27,7 +27,7 @@ class PhotosAdapter(
             item?.let {
                 Glide
                     .with(imageViewPhoto.context)
-                    .load(it.urls.regular)
+                    .load(it.urls.small)
                     .into(imageViewPhoto)
                 Glide
                     .with(imageViewAvatar.context)
