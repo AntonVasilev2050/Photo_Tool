@@ -1,10 +1,7 @@
 package com.avv2050soft.unsplashtool.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.appcompat.widget.Toolbar
-import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -46,12 +43,14 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
     }
 
     private fun showPhotoDetails(photoDetails: PhotoDetails?) {
-        Log.d("data_test", "Photo details: ${photoDetails.toString()}")
         photoDetails?.let {
             with(binding) {
                 Glide
                     .with(imageViewPhoto.context)
                     .load(photoDetails.urls.regular)
+                    .placeholder(R.drawable.loading_icon)
+                    .thumbnail(Glide.with(imageViewPhoto.context).load(R.drawable.loading_icon))
+                    .error(R.drawable.error_sing)
                     .into(imageViewPhoto)
                 Glide
                     .with(imageViewAvatar.context)
@@ -67,10 +66,13 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
                 photoDetails.tags.forEach { tag ->
                     tagTitlesList.add(tag.title)
                 }
-                textViewTags.text = buildString {
-                    append("#")
-                    append(tagTitlesList.joinToString(" #"))
+                if (tagTitlesList.isNotEmpty()){
+                    textViewTags.text = buildString {
+                        append("#")
+                        append(tagTitlesList.joinToString(" #"))
+                    }
                 }
+
                 textViewMade.text = photoDetails.exif.make
                 textViewModel.text = photoDetails.exif.model
                 textViewExposure.text = photoDetails.exif.exposureTime
