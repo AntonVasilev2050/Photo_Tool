@@ -36,16 +36,18 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
             repeatOnLifecycle(Lifecycle.State.CREATED) {
                 photoId?.let {
                     viewModel.getPhotoDetails(it)
-                    viewModel.photoDetailsStateFlow.collect {
-                        showPhotoDetails(it)
+                    viewModel.photoDetailsStateFlow.collect { photoDetails ->
+                        showPhotoDetails(photoDetails)
                     }
                 }
             }
         }
+
     }
 
     private fun showPhotoDetails(photoDetails: PhotoDetails?) {
         photoDetails?.let {
+        var photoLikesCount = photoDetails.likes
             with(binding) {
                 Glide
                     .with(imageViewPhoto.context)
@@ -61,14 +63,18 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
                     .into(imageViewAvatar)
                 textViewAuthorName.text = photoDetails.user.name
                 textViewUserName.text = photoDetails.user.username
-                val totalLikes = photoDetails.likes.toStringWithKNotation()
-                textViewTotalLikeCount.text = totalLikes
+                textViewTotalLikeCount.text = photoLikesCount.toStringWithKNotation()
+                if (photoDetails.likedByUser){
+                    imageViewLikeYesNo.setImageResource(R.drawable.like_yes)
+                }else {
+                    imageViewLikeYesNo.setImageResource(R.drawable.like_no)
+                }
                 textViewLocation.text = photoDetails.user.location
                 val tagTitlesList = mutableListOf<String>()
                 photoDetails.tags.forEach { tag ->
                     tagTitlesList.add(tag.title)
                 }
-                if (tagTitlesList.isNotEmpty()){
+                if (tagTitlesList.isNotEmpty()) {
                     textViewTags.text = buildString {
                         append("#")
                         append(tagTitlesList.joinToString(" #"))
@@ -94,9 +100,28 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
                     val chosenIntent = Intent.createChooser(intent, "Share photo")
                     startActivity(chosenIntent)
                 }
+                binding.imageViewLikeYesNo.setOnClickListener {
+                    if (!photoDetails.likedByUser) {
+                        viewModel.likePhoto(photoDetails.id)
+                        photoDetails.likedByUser = true
+                        binding.imageViewLikeYesNo.setImageResource(R.drawable.like_yes)
+                        photoLikesCount++
+                        textViewTotalLikeCount.text = photoLikesCount.toStringWithKNotation()
+                    } else {
+                        viewModel.unlikePhoto(photoDetails.id)
+                        photoDetails.likedByUser = false
+                        binding.imageViewLikeYesNo.setImageResource(R.drawable.like_no)
+                        photoLikesCount--
+                        textViewTotalLikeCount.text = photoLikesCount.toStringWithKNotation()
+                    }
+//                                binding.textViewTotalLikeCount.text =
+//                                    photoDetails.likes.toStringWithKNotation()
+
+                }
             }
         }
     }
+
 
     override fun onDestroy() {
         showAppbarAndBottomView(requireActivity())

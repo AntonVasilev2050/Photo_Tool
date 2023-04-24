@@ -25,7 +25,7 @@ data class PhotoDetails(
     @SerializedName("id")
     val id: String,
     @SerializedName("liked_by_user")
-    val likedByUser: Boolean,
+    var likedByUser: Boolean,
     @SerializedName("likes")
     val likes: Int,
     @SerializedName("links")

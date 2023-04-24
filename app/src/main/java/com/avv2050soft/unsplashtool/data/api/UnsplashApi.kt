@@ -1,13 +1,16 @@
 package com.avv2050soft.unsplashtool.data.api
 
+import com.avv2050soft.unsplashtool.domain.models.likedPhoto.LikedPhoto
 import com.avv2050soft.unsplashtool.domain.models.photo_details.PhotoDetails
 import com.avv2050soft.unsplashtool.domain.models.photos.Photo
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 
@@ -27,6 +30,20 @@ interface UnsplashApi {
         @Path("id") id: String,
         @Query("client_id") clientId: String = CLIENT_ID,
     ): PhotoDetails
+
+    @POST("photos/{id}/like")
+    suspend fun likePhoto(
+        @Header("Authorization") token : String,
+        @Path("id") id: String,
+        @Query("client_id") clientId: String = CLIENT_ID,
+    ): LikedPhoto
+
+    @DELETE("photos/{id}/like")
+    suspend fun unlikePhoto(
+        @Header("Authorization") token : String,
+        @Path("id") id: String,
+        @Query("client_id") clientId: String = CLIENT_ID,
+    ): LikedPhoto
 
     companion object {
         private const val CLIENT_ID = "jDzfFlMFcQB6Z7z-7bbQsa6Om2IcKnocUGP_ci_Srgc"
