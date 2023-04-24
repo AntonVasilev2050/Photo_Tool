@@ -6,14 +6,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.appcompat.widget.Toolbar
-import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.avv2050soft.unsplashtool.R
@@ -21,9 +16,7 @@ import com.avv2050soft.unsplashtool.data.auth.TokenStorage
 import com.avv2050soft.unsplashtool.databinding.FragmentLoginBinding
 import com.avv2050soft.unsplashtool.presentation.utils.launchAndCollectIn
 import com.avv2050soft.unsplashtool.presentation.utils.toast
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 import net.openid.appauth.AuthorizationException
 import net.openid.appauth.AuthorizationResponse
 
@@ -53,6 +46,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         bindViewModel()
+
     }
 
     private fun bindViewModel() {
@@ -71,7 +65,20 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             toast(it)
         }
         viewModel.authSuccessFlow.launchAndCollectIn(viewLifecycleOwner) {
-            findNavController().navigate(R.id.photosFragment)
+//            если приложение было запущено по ссылке из другого приложения,
+//            то запускаем просмотр подробной информации о фото, иначе - лента с фото
+            val data = activity?.intent?.data
+            val photoIdBundle = Bundle()
+            photoIdBundle.putString(PHOTO_ID_KEY, data.toString().substringAfterLast("/"))
+            if (data != null) {
+                findNavController().navigate(
+                    R.id.photoDetailsFragment,
+                    photoIdBundle
+                )
+            } else {
+                findNavController().navigate(R.id.photosFragment)
+            }
+
             Log.d(
                 "Oauth",
                 "access: ${TokenStorage.accessToken} id: ${TokenStorage.idToken} refr: ${TokenStorage.refreshToken}"

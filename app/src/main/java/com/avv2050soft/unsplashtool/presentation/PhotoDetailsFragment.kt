@@ -1,5 +1,7 @@
 package com.avv2050soft.unsplashtool.presentation
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -82,6 +84,16 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
                 textViewDownloads.text = photoDetails.downloads.toStringWithKNotation()
                 textViewAbout.text = photoDetails.user.bio
                 textViewUserName2.text = photoDetails.user.username
+
+                imageViewSharePhoto.setOnClickListener {
+                    val photoLink = Uri.parse(photoDetails.links.html)
+                    val intent = Intent(Intent.ACTION_SEND)
+                    intent.type = "text/plain"
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "an unsplash photo")
+                    intent.putExtra(Intent.EXTRA_TEXT, "$photoLink")
+                    val chosenIntent = Intent.createChooser(intent, "Share photo")
+                    startActivity(chosenIntent)
+                }
             }
         }
     }
