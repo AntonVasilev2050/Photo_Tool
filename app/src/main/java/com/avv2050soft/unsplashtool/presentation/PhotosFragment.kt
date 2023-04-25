@@ -71,16 +71,5 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
                 }
             }
         }
-
-//        viewLifecycleOwner.lifecycleScope.launch {
-//            repeatOnLifecycle(Lifecycle.State.CREATED){
-//                viewModel.loadAllPhotosFromDb()
-//                viewModel.photosFromDbStateFlow.collect{
-//                    photoAdapter.submitData(PagingData.from(it))
-//                    Log.d("data_test", "photoListPageDB - ${it.toString()}" )
-//                }
-//            }
-//        }
-
     }
 }

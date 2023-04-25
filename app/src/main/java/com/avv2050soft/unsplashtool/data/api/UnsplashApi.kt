@@ -21,28 +21,28 @@ interface UnsplashApi {
         @Header("Authorization") token : String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int = PER_PAGE,
-        @Query("client_id") clientId: String = CLIENT_ID,
+//        @Query("client_id") clientId: String = CLIENT_ID,
     ): List<Photo>
 
     @GET("photos/{id}")
     suspend fun getPhotoDetails(
         @Header("Authorization") token : String,
         @Path("id") id: String,
-        @Query("client_id") clientId: String = CLIENT_ID,
+//        @Query("client_id") clientId: String = CLIENT_ID,
     ): PhotoDetails
 
     @POST("photos/{id}/like")
     suspend fun likePhoto(
         @Header("Authorization") token : String,
         @Path("id") id: String,
-        @Query("client_id") clientId: String = CLIENT_ID,
+//        @Query("client_id") clientId: String = CLIENT_ID,
     ): LikedPhoto
 
     @DELETE("photos/{id}/like")
     suspend fun unlikePhoto(
         @Header("Authorization") token : String,
         @Path("id") id: String,
-        @Query("client_id") clientId: String = CLIENT_ID,
+//        @Query("client_id") clientId: String = CLIENT_ID,
     ): LikedPhoto
 
     companion object {
