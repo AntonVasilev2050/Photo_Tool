@@ -53,8 +53,7 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
     private val requestLocationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
-                // Разрешение предоставлено, можно скачивать файл
-                photoDetails?.let { showUserLocation(it) } // передаем параметр в функцию downloadFile()
+                photoDetails?.let { showUserLocation(it) }
             } else {
                 // Разрешение не предоставлено, необходимо сообщить пользователю
                 Toast.makeText(requireContext(), "permission denied", Toast.LENGTH_SHORT).show()
