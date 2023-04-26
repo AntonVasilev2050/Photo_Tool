@@ -8,7 +8,9 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.avv2050soft.unsplashtool.data.PhotoPagingSource
+import com.avv2050soft.unsplashtool.data.SearchPhotoPagingSource
 import com.avv2050soft.unsplashtool.data.api.UnsplashApi.Companion.PER_PAGE
+import com.avv2050soft.unsplashtool.domain.models.photo_search.Result
 import com.avv2050soft.unsplashtool.domain.models.photos.Photo
 import com.avv2050soft.unsplashtool.domain.repository.DatabaseRepository
 import com.avv2050soft.unsplashtool.domain.repository.UnsplashRepository
@@ -28,6 +30,11 @@ class PhotosViewModel @Inject constructor(
     val pagePhotos: Flow<PagingData<Photo>> = Pager(
         config = PagingConfig(pageSize = PER_PAGE),
         pagingSourceFactory = { PhotoPagingSource(repository) }
+    ).flow.cachedIn(viewModelScope)
+
+    val searchPhotos: Flow<PagingData<Result>> = Pager(
+        config = PagingConfig(pageSize = PER_PAGE),
+        pagingSourceFactory = {SearchPhotoPagingSource(repository)}
     ).flow.cachedIn(viewModelScope)
 
     private val _photosFromDb = MutableStateFlow(emptyList<Photo>())

@@ -2,6 +2,8 @@ package com.avv2050soft.unsplashtool.data.api
 
 import com.avv2050soft.unsplashtool.domain.models.likedPhoto.LikedPhoto
 import com.avv2050soft.unsplashtool.domain.models.photo_details.PhotoDetails
+import com.avv2050soft.unsplashtool.domain.models.photo_search.Result
+import com.avv2050soft.unsplashtool.domain.models.photo_search.SearchResponse
 import com.avv2050soft.unsplashtool.domain.models.photos.Photo
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -44,6 +46,15 @@ interface UnsplashApi {
         @Path("id") id: String,
 //        @Query("client_id") clientId: String = CLIENT_ID,
     ): LikedPhoto
+
+    @GET("/search/photos/")
+    suspend fun searchPhotos(
+        @Header("Authorization") token : String,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int = PER_PAGE,
+        @Query("query") query : String,
+//        @Query("client_id") clientId: String = CLIENT_ID,
+    ): SearchResponse
 
     companion object {
         private const val CLIENT_ID = "jDzfFlMFcQB6Z7z-7bbQsa6Om2IcKnocUGP_ci_Srgc"

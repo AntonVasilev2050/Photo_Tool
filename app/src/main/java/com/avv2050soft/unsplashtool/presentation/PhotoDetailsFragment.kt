@@ -28,6 +28,7 @@ import com.avv2050soft.unsplashtool.presentation.utils.showAppbarAndBottomView
 import com.avv2050soft.unsplashtool.presentation.utils.toStringWithKNotation
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import java.io.File
@@ -42,11 +43,17 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
     private val requestDownloadPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
-                // Разрешение предоставлено, можно скачивать файл
-                photoDetails?.let { downloadPhoto(it) } // передаем параметр в функцию downloadFile()
+                photoDetails?.let { downloadPhoto(it) }
             } else {
-                // Разрешение не предоставлено, необходимо сообщить пользователю
-                Toast.makeText(requireContext(), "permission denied", Toast.LENGTH_SHORT).show()
+                Snackbar.make(
+                    requireView().rootView,
+                    "Permission is required to download and save the file",
+                    Snackbar.LENGTH_LONG
+                )
+                    .setAction("Grant permission\n\n\n"){
+                        photoDetails?.let { it1 -> checkDownloadPermission(it1) }
+                    }
+                    .show()
             }
         }
 
@@ -55,8 +62,15 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
             if (isGranted) {
                 photoDetails?.let { showUserLocation(it) }
             } else {
-                // Разрешение не предоставлено, необходимо сообщить пользователю
-                Toast.makeText(requireContext(), "permission denied", Toast.LENGTH_SHORT).show()
+                Snackbar.make(
+                    requireView().rootView,
+                    "Permission is required to show location",
+                    Snackbar.LENGTH_LONG
+                )
+                    .setAction("Grant permission\n\n\n"){
+                        photoDetails?.let { it1 -> checkLocationPermission(it1) }
+                    }
+                    .show()
             }
         }
 
@@ -158,6 +172,8 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
         } else {
             downloadPhoto(photoDetails)
         }
+
+//        shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)
     }
 
     private fun checkLocationPermission(photoDetails: PhotoDetails) {
@@ -194,14 +210,6 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
         val geoUri = Uri.parse("geo:0,0?q=${photoDetails.user.location}")
         val mapIntent = Intent(Intent.ACTION_VIEW, geoUri)
         startActivity(mapIntent)
-//        val packageManagerFragment = activity?.packageManager
-//        packageManagerFragment?.let {
-//            if (mapIntent.resolveActivity(packageManagerFragment) != null) {
-//                startActivity(mapIntent)
-//            } else {
-//                Log.d("ImplicitIntents", "Can't handle mapIntent!")
-//            }
-//        }
     }
 
     private fun setLikeUnlike(photoDetails: PhotoDetails) {

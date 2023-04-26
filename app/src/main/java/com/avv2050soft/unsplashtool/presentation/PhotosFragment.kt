@@ -63,6 +63,10 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
 
+//        viewModel.searchPhotos.onEach {
+//            photoAdapter.submitData(it)
+//        }.launchIn(viewLifecycleOwner.lifecycleScope)
+
         photoAdapter.addOnPagesUpdatedListener {
             lifecycleScope.launch {
                 val photoListPage = photoAdapter.snapshot().items
