@@ -43,4 +43,18 @@
     <string name="permission_is_required_to_download_and_save_the_file">Permission is required to download and save the file</string>
     <string name="grant_permission">Grant permission\n\n\n</string>
     <string name="permission_is_required_to_show_location">Permission is required to show location</string>
+    <string name="loading_dot_dot_dot">loading...</string>
+    <string name="share_photo_icon">Share Photo icon</string>
+    <string name="location_icon">Location icon</string>
+    <string name="made_with">Made with:</string>
+    <string name="model">Model:</string>
+    <string name="exposure">Exposure:</string>
+    <string name="aperture">Aperture:</string>
+    <string name="focallength">FocalLength:</string>
+    <string name="iso">ISO:</string>
+    <string name="about">About</string>
+    <string name="semicolon">:</string>
+    <string name="left_bracket">(</string>
+    <string name="right_bracket">)</string>
+    <string name="download_icon">Download icon</string>
 </resources>
