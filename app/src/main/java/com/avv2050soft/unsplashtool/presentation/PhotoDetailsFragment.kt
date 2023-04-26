@@ -36,17 +36,6 @@ import java.io.File
 class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
     private val binding by viewBinding(FragmentPhotoDetailsBinding::bind)
     private val viewModel: PhotoDetailsViewModel by viewModels()
-//    private var permission = 0
-//
-//    private val launcher =
-//        registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-//            permission = if (it) {
-//                1
-//            } else {
-//                0
-//            }
-//
-//        }
 
     private var photoDetails: PhotoDetails? = null // переменная, которая будет хранить параметр
 
@@ -60,6 +49,7 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
                 Toast.makeText(requireContext(), "permission denied", Toast.LENGTH_SHORT).show()
             }
         }
+
     private val requestLocationPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
@@ -242,7 +232,6 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
         val chosenIntent = Intent.createChooser(intent, "Share photo")
         startActivity(chosenIntent)
     }
-
 
     override fun onDestroy() {
         showAppbarAndBottomView(requireActivity())
