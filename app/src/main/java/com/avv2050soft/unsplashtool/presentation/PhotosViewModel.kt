@@ -32,11 +32,6 @@ class PhotosViewModel @Inject constructor(
         pagingSourceFactory = { PhotoPagingSource(repository) }
     ).flow.cachedIn(viewModelScope)
 
-    val searchPhotos: Flow<PagingData<Result>> = Pager(
-        config = PagingConfig(pageSize = PER_PAGE),
-        pagingSourceFactory = {SearchPhotoPagingSource(repository)}
-    ).flow.cachedIn(viewModelScope)
-
     private val _photosFromDb = MutableStateFlow(emptyList<Photo>())
     val photosFromDbStateFlow = _photosFromDb.asStateFlow()
 

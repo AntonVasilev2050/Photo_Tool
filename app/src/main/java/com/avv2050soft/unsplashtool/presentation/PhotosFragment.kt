@@ -34,7 +34,10 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
     private fun onItemClick(photo: Photo) {
         val photoIdBundle = Bundle()
         photoIdBundle.putString(PHOTO_ID_KEY, photo.id)
-        findNavController().navigate(R.id.action_photosFragment_to_photoDetailsFragment, photoIdBundle)
+        findNavController().navigate(
+            R.id.action_photosFragment_to_photoDetailsFragment,
+            photoIdBundle
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -62,10 +65,6 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
                 }
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-//        viewModel.searchPhotos.onEach {
-//            photoAdapter.submitData(it)
-//        }.launchIn(viewLifecycleOwner.lifecycleScope)
 
         photoAdapter.addOnPagesUpdatedListener {
             lifecycleScope.launch {

@@ -4,6 +4,8 @@ import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.avv2050soft.unsplashtool.domain.models.photo_search.Result
 import com.avv2050soft.unsplashtool.domain.repository.UnsplashRepository
+import com.avv2050soft.unsplashtool.presentation.MainActivity
+import com.avv2050soft.unsplashtool.presentation.SearchPhotosViewModel
 import javax.inject.Inject
 
 class SearchPhotoPagingSource @Inject constructor(
@@ -14,7 +16,7 @@ class SearchPhotoPagingSource @Inject constructor(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Result> {
         val page = params.key ?: FIRST_PAGE
         return kotlin.runCatching {
-            repository.searchPhotos(page, query)
+            repository.searchPhotos(page, SearchPhotosViewModel.query)
         }.fold(
             onSuccess = {
                 LoadResult.Page(
@@ -29,6 +31,5 @@ class SearchPhotoPagingSource @Inject constructor(
 
     companion object {
         private const val FIRST_PAGE = 1
-        var query: String = ""
     }
 }

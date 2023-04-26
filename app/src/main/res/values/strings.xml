@@ -40,4 +40,7 @@
     <string name="at_char">\@</string>
     <string name="likes_icon">Likes icon</string>
     <string name="underscored_download"><u>Download</u></string>
+    <string name="permission_is_required_to_download_and_save_the_file">Permission is required to download and save the file</string>
+    <string name="grant_permission">Grant permission\n\n\n</string>
+    <string name="permission_is_required_to_show_location">Permission is required to show location</string>
 </resources>

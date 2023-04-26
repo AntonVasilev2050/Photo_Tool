@@ -47,10 +47,10 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
             } else {
                 Snackbar.make(
                     requireView().rootView,
-                    "Permission is required to download and save the file",
+                    getString(R.string.permission_is_required_to_download_and_save_the_file),
                     Snackbar.LENGTH_LONG
                 )
-                    .setAction("Grant permission\n\n\n"){
+                    .setAction(getString(R.string.grant_permission)){
                         photoDetails?.let { it1 -> checkDownloadPermission(it1) }
                     }
                     .show()
@@ -64,10 +64,10 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
             } else {
                 Snackbar.make(
                     requireView().rootView,
-                    "Permission is required to show location",
+                    getString(R.string.permission_is_required_to_show_location),
                     Snackbar.LENGTH_LONG
                 )
-                    .setAction("Grant permission\n\n\n"){
+                    .setAction(getString(R.string.grant_permission)){
                         photoDetails?.let { it1 -> checkLocationPermission(it1) }
                     }
                     .show()
@@ -218,14 +218,12 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
             photoDetails.likedByUser = true
             photoDetails.likes++
             binding.imageViewLikeYesNo.setImageResource(R.drawable.like_yes)
-//            photoLikesCount++
             binding.textViewTotalLikeCount.text = photoDetails.likes.toStringWithKNotation()
         } else {
             viewModel.unlikePhoto(photoDetails.id)
             photoDetails.likedByUser = false
             photoDetails.likes--
             binding.imageViewLikeYesNo.setImageResource(R.drawable.like_no)
-//            photoLikesCount--
             binding.textViewTotalLikeCount.text = photoDetails.likes.toStringWithKNotation()
         }
     }

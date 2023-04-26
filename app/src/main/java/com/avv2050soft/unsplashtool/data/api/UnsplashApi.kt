@@ -50,9 +50,9 @@ interface UnsplashApi {
     @GET("/search/photos/")
     suspend fun searchPhotos(
         @Header("Authorization") token : String,
+        @Query("query") query : String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int = PER_PAGE,
-        @Query("query") query : String,
 //        @Query("client_id") clientId: String = CLIENT_ID,
     ): SearchResponse
 
