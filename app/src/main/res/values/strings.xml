@@ -12,12 +12,11 @@
     <string name="track_statistics">Track statistics</string>
     <string name="download_your_favorite_shots">Download your favorite shots</string>
 
-    <string name="auth_canceled">Аутентификация не выполнена</string>
+    <string name="auth_canceled">Authentication failed</string>
     <string name="corrupt_access_token">Corrupt access token</string>
     <string name="get_user_info">Get user info</string>
     <string name="get_user_error">Get user error</string>
     <string name="logout">logout</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="splash_screen_image">Splash Screen Image</string>
     <string name="welcome_picture">Welcome picture</string>
@@ -43,7 +42,7 @@
     <string name="permission_is_required_to_download_and_save_the_file">Permission is required to download and save the file</string>
     <string name="grant_permission">Grant permission\n\n\n</string>
     <string name="permission_is_required_to_show_location">Permission is required to show location</string>
-    <string name="loading_dot_dot_dot">loading...</string>
+    <string name="loading_dot_dot_dot">loading…</string>
     <string name="share_photo_icon">Share Photo icon</string>
     <string name="location_icon">Location icon</string>
     <string name="made_with">Made with:</string>
@@ -57,4 +56,8 @@
     <string name="left_bracket">(</string>
     <string name="right_bracket">)</string>
     <string name="download_icon">Download icon</string>
+    <string name="search_fragment_label">Search</string>
+    <string name="photo_details_fragment_label">Photo Details</string>
+    <string name="login_fragment_label">Login</string>
+    <string name="collection_cover">Collection cover</string>
 </resources>

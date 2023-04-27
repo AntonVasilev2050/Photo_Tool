@@ -1,8 +1,8 @@
 package com.avv2050soft.unsplashtool.data.api
 
+import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsItem
 import com.avv2050soft.unsplashtool.domain.models.likedPhoto.LikedPhoto
 import com.avv2050soft.unsplashtool.domain.models.photo_details.PhotoDetails
-import com.avv2050soft.unsplashtool.domain.models.photo_search.Result
 import com.avv2050soft.unsplashtool.domain.models.photo_search.SearchResponse
 import com.avv2050soft.unsplashtool.domain.models.photos.Photo
 import okhttp3.OkHttpClient
@@ -18,7 +18,7 @@ import retrofit2.http.Query
 
 interface UnsplashApi {
 
-    @GET("photos/")
+    @GET("photos")
     suspend fun getPhotos(
         @Header("Authorization") token : String,
         @Query("page") page: Int,
@@ -47,7 +47,7 @@ interface UnsplashApi {
 //        @Query("client_id") clientId: String = CLIENT_ID,
     ): LikedPhoto
 
-    @GET("/search/photos/")
+    @GET("/search/photos")
     suspend fun searchPhotos(
         @Header("Authorization") token : String,
         @Query("query") query : String,
@@ -55,6 +55,14 @@ interface UnsplashApi {
         @Query("per_page") perPage: Int = PER_PAGE,
 //        @Query("client_id") clientId: String = CLIENT_ID,
     ): SearchResponse
+
+    @GET("collections")
+    suspend fun getCollections(
+        @Header("Authorization") token : String,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int = PER_PAGE,
+//        @Query("client_id") clientId: String = CLIENT_ID,
+    ): List<CollectionsItem>
 
     companion object {
         private const val CLIENT_ID = "jDzfFlMFcQB6Z7z-7bbQsa6Om2IcKnocUGP_ci_Srgc"

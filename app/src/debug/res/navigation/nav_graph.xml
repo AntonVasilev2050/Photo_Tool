@@ -25,7 +25,7 @@
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.LoginFragment"
-        android:label="Login"
+        android:label="@string/login_fragment_label"
         tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_photosFragment"
@@ -57,18 +57,23 @@
     <fragment
         android:id="@+id/photoDetailsFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.PhotoDetailsFragment"
-        android:label="Photo Details"
+        android:label="@string/photo_details_fragment_label"
         tools:layout="@layout/fragment_photo_details" />
     <fragment
         android:id="@+id/searchPhotosFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.SearchPhotosFragment"
-        android:label="Searched photos"
+        android:label="@string/search_fragment_label"
         tools:layout="@layout/fragment_search_photos" >
         <action
             android:id="@+id/action_searchPhotosFragment_to_photoDetailsFragment"
             app:destination="@id/photoDetailsFragment"
-            app:popUpTo="@id/photosFragment"
+            app:popUpTo="@id/searchPhotosFragment"
             app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_searchPhotosFragment_to_photosFragment"
+            app:destination="@id/photosFragment"
+            app:popUpTo="@id/photosFragment"
+            app:popUpToInclusive="false"/>
     </fragment>
 
 </navigation>

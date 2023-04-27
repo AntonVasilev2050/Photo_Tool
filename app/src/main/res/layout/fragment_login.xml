@@ -58,8 +58,10 @@
 
     <ImageView
         android:id="@+id/imageViewEllipse"
-        android:layout_width="450dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="-30dp"
+        android:layout_marginEnd="-30dp"
         android:scaleType="fitXY"
         android:src="@drawable/ellipse_12"
         app:layout_constraintEnd_toEndOf="parent"

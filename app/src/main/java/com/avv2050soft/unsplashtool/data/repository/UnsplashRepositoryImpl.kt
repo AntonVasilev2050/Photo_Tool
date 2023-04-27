@@ -2,6 +2,7 @@ package com.avv2050soft.unsplashtool.data.repository
 
 import com.avv2050soft.unsplashtool.data.api.UnsplashApi
 import com.avv2050soft.unsplashtool.data.auth.TokenStorage
+import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsItem
 import com.avv2050soft.unsplashtool.domain.models.likedPhoto.LikedPhoto
 import com.avv2050soft.unsplashtool.domain.models.photo_details.PhotoDetails
 import com.avv2050soft.unsplashtool.domain.models.photo_search.Result
@@ -33,5 +34,9 @@ class UnsplashRepositoryImpl @Inject constructor() : UnsplashRepository {
     override suspend fun searchPhotos(page: Int, query: String): List<Result> {
         return UnsplashApi.create()
             .searchPhotos(token = accessToken, page = page, query = query).results
+    }
+
+    override suspend fun getCollection(page: Int): List<CollectionsItem> {
+        return UnsplashApi.create().getCollections(token = accessToken, page = page)
     }
 }
