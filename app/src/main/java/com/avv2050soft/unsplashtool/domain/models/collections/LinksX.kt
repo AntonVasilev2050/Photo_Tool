@@ -4,6 +4,10 @@ package com.avv2050soft.unsplashtool.domain.models.collections
 import com.google.gson.annotations.SerializedName
 
 data class LinksX(
+    @SerializedName("followers")
+    val followers: String,
+    @SerializedName("following")
+    val following: String,
     @SerializedName("html")
     val html: String,
     @SerializedName("likes")

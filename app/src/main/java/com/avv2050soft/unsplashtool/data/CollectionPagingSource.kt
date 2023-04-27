@@ -2,20 +2,19 @@ package com.avv2050soft.unsplashtool.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.avv2050soft.unsplashtool.domain.models.photos.Photo
+import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsListItem
 import com.avv2050soft.unsplashtool.domain.repository.UnsplashRepository
 import javax.inject.Inject
 
-class PhotoPagingSource @Inject constructor(
+class CollectionPagingSource @Inject constructor(
     private val repository: UnsplashRepository
-) : PagingSource<Int, Photo>() {
+) : PagingSource<Int, CollectionsListItem>() {
+    override fun getRefreshKey(state: PagingState<Int, CollectionsListItem>): Int = FIRST_PAGE
 
-    override fun getRefreshKey(state: PagingState<Int, Photo>): Int = FIRST_PAGE
-
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Photo> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CollectionsListItem> {
         val page = params.key ?: FIRST_PAGE
         return kotlin.runCatching {
-            repository.getPhotos(page)
+            repository.getCollection(page)
         }.fold(
             onSuccess = {
                 LoadResult.Page(

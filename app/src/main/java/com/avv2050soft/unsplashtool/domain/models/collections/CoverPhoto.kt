@@ -4,10 +4,16 @@ package com.avv2050soft.unsplashtool.domain.models.collections
 import com.google.gson.annotations.SerializedName
 
 data class CoverPhoto(
+    @SerializedName("alt_description")
+    val altDescription: String,
     @SerializedName("blur_hash")
     val blurHash: String,
     @SerializedName("color")
     val color: String,
+    @SerializedName("created_at")
+    val createdAt: String,
+    @SerializedName("current_user_collections")
+    val currentUserCollections: List<Any>,
     @SerializedName("description")
     val description: String,
     @SerializedName("height")
@@ -20,6 +26,14 @@ data class CoverPhoto(
     val likes: Int,
     @SerializedName("links")
     val links: Links,
+    @SerializedName("promoted_at")
+    val promotedAt: String,
+    @SerializedName("sponsorship")
+    val sponsorship: Any,
+    @SerializedName("topic_submissions")
+    val topicSubmissions: TopicSubmissions,
+    @SerializedName("updated_at")
+    val updatedAt: String,
     @SerializedName("urls")
     val urls: Urls,
     @SerializedName("user")

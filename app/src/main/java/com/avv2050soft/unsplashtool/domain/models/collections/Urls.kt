@@ -12,6 +12,8 @@ data class Urls(
     val regular: String,
     @SerializedName("small")
     val small: String,
+    @SerializedName("small_s3")
+    val smallS3: String,
     @SerializedName("thumb")
     val thumb: String
 )

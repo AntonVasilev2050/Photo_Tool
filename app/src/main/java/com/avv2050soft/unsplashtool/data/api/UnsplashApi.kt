@@ -1,6 +1,6 @@
 package com.avv2050soft.unsplashtool.data.api
 
-import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsItem
+import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsListItem
 import com.avv2050soft.unsplashtool.domain.models.likedPhoto.LikedPhoto
 import com.avv2050soft.unsplashtool.domain.models.photo_details.PhotoDetails
 import com.avv2050soft.unsplashtool.domain.models.photo_search.SearchResponse
@@ -58,11 +58,11 @@ interface UnsplashApi {
 
     @GET("collections")
     suspend fun getCollections(
-        @Header("Authorization") token : String,
+//        @Header("Authorization") token : String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int = PER_PAGE,
-//        @Query("client_id") clientId: String = CLIENT_ID,
-    ): List<CollectionsItem>
+        @Query("client_id") clientId: String = CLIENT_ID,
+    ): List<CollectionsListItem>
 
     companion object {
         private const val CLIENT_ID = "jDzfFlMFcQB6Z7z-7bbQsa6Om2IcKnocUGP_ci_Srgc"

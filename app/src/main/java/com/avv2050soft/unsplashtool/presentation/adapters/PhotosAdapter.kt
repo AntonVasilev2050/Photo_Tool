@@ -35,11 +35,11 @@ class PhotosAdapter(
                     .load(it.user.profileImage.medium)
                     .transform(CircleCrop())
                     .into(imageViewAvatar)
-                textViewAuthorName.text = item.user.name
-                textViewUserName.text = item.user.username
-                val totalLikes = item.likes.toStringWithKNotation()
+                textViewAuthorName.text = it.user.name
+                textViewUserName.text = it.user.username
+                val totalLikes = it.likes.toStringWithKNotation()
                 textViewTotalLikeCount.text = totalLikes
-                if (item.likedByUser){
+                if (it.likedByUser){
                     imageViewLikeYesNo.setImageResource(R.drawable.like_yes)
                 }else {
                     imageViewLikeYesNo.setImageResource(R.drawable.like_no)

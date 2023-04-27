@@ -1,34 +1,55 @@
 package com.avv2050soft.unsplashtool.presentation
 
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.avv2050soft.unsplashtool.R
+import com.avv2050soft.unsplashtool.databinding.FragmentCollectionsBinding
+import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsListItem
+import com.avv2050soft.unsplashtool.presentation.adapters.CollectionsAdapter
+import com.avv2050soft.unsplashtool.presentation.adapters.PhotosLoadStateAdapter
+import com.avv2050soft.unsplashtool.presentation.utils.showAppbarAndBottomView
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
+
+const val COLLECTION_ID_KEY = "collection_id_key"
 
 @AndroidEntryPoint
-class CollectionsFragment : Fragment() {
+class CollectionsFragment : Fragment(R.layout.fragment_collections) {
+    private val binding by viewBinding(FragmentCollectionsBinding::bind)
+    private val viewModel: CollectionsViewModel by viewModels()
+    private val collectionsAdapter =
+        CollectionsAdapter { collection: CollectionsListItem -> onItemClick(collection) }
 
-    companion object {
-        fun newInstance() = CollectionsFragment()
+
+    private fun onItemClick(collectionItem: CollectionsListItem) {
+        val collectionIdBundle = Bundle()
+        collectionIdBundle.putString(COLLECTION_ID_KEY, collectionItem.id)
+//        findNavController().navigate(
+//            R.id.action_collectionsFragment_to_collectionFragment,
+//            collectionIdBundle
+//        )
     }
 
-    private lateinit var viewModel: CollectionsViewModel
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        showAppbarAndBottomView(requireActivity())
+       binding.recyclerViewCollections .adapter = collectionsAdapter.withLoadStateFooter(PhotosLoadStateAdapter())
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_collections, container, false)
+        binding.swipeRefreshCollections .setOnRefreshListener { collectionsAdapter.refresh() }
+
+        collectionsAdapter.loadStateFlow.onEach {
+            binding.swipeRefreshCollections.isRefreshing = it.refresh == LoadState.Loading
+        }
+
+        viewModel.pageCollections.onEach {
+            collectionsAdapter.submitData(it)
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(CollectionsViewModel::class.java)
-        // TODO: Use the ViewModel
-    }
-
 }

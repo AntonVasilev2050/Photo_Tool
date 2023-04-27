@@ -8,9 +8,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.avv2050soft.unsplashtool.data.PhotoPagingSource
-import com.avv2050soft.unsplashtool.data.SearchPhotoPagingSource
 import com.avv2050soft.unsplashtool.data.api.UnsplashApi.Companion.PER_PAGE
-import com.avv2050soft.unsplashtool.domain.models.photo_search.Result
 import com.avv2050soft.unsplashtool.domain.models.photos.Photo
 import com.avv2050soft.unsplashtool.domain.repository.DatabaseRepository
 import com.avv2050soft.unsplashtool.domain.repository.UnsplashRepository
@@ -19,7 +17,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
