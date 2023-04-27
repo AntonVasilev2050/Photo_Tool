@@ -6,13 +6,13 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.avv2050soft.unsplashtool.databinding.ItemCollectionBinding
-import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsListItem
+import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsItem
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 
 class CollectionsAdapter(
-    private val onClick: (CollectionsListItem) -> Unit
-) : PagingDataAdapter<CollectionsListItem, CollectionViewHolder>(CollectionDiffUtilCallback()) {
+    private val onClick: (CollectionsItem) -> Unit
+) : PagingDataAdapter<CollectionsItem, CollectionViewHolder>(CollectionDiffUtilCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CollectionViewHolder {
         return CollectionViewHolder(
@@ -44,16 +44,16 @@ class CollectionsAdapter(
     }
 }
 
-class CollectionDiffUtilCallback : DiffUtil.ItemCallback<CollectionsListItem>() {
+class CollectionDiffUtilCallback : DiffUtil.ItemCallback<CollectionsItem>() {
     override fun areItemsTheSame(
-        oldItem: CollectionsListItem,
-        newItem: CollectionsListItem
+        oldItem: CollectionsItem,
+        newItem: CollectionsItem
     ): Boolean =
         oldItem.id == newItem.id
 
     override fun areContentsTheSame(
-        oldItem: CollectionsListItem,
-        newItem: CollectionsListItem
+        oldItem: CollectionsItem,
+        newItem: CollectionsItem
     ): Boolean =
         oldItem == newItem
 }

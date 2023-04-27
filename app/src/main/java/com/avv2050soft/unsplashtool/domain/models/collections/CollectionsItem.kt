@@ -3,7 +3,7 @@ package com.avv2050soft.unsplashtool.domain.models.collections
 
 import com.google.gson.annotations.SerializedName
 
-data class CollectionsListItem(
+data class CollectionsItem(
     @SerializedName("cover_photo")
     val coverPhoto: CoverPhoto,
     @SerializedName("curated")

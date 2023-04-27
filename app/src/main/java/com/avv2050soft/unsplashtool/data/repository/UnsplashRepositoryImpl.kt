@@ -2,7 +2,9 @@ package com.avv2050soft.unsplashtool.data.repository
 
 import com.avv2050soft.unsplashtool.data.api.UnsplashApi
 import com.avv2050soft.unsplashtool.data.auth.TokenStorage
-import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsListItem
+import com.avv2050soft.unsplashtool.domain.models.collectioninfo.CollectionInfo
+import com.avv2050soft.unsplashtool.domain.models.collectionphotos.CollectionPhotoItem
+import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsItem
 import com.avv2050soft.unsplashtool.domain.models.likedPhoto.LikedPhoto
 import com.avv2050soft.unsplashtool.domain.models.photo_details.PhotoDetails
 import com.avv2050soft.unsplashtool.domain.models.photo_search.Result
@@ -35,7 +37,15 @@ class UnsplashRepositoryImpl @Inject constructor() : UnsplashRepository {
             .searchPhotos(token = accessToken, page = page, query = query).results
     }
 
-    override suspend fun getCollection(page: Int): List<CollectionsListItem> {
-        return UnsplashApi.create().getCollections(page = page)
+    override suspend fun getCollection(page: Int): List<CollectionsItem> {
+        return UnsplashApi.create().getCollections(token = accessToken, page = page)
+    }
+
+    override suspend fun getThisCollectionInfo(id: String): CollectionInfo {
+        return UnsplashApi.create().getThisCollectionInfo(token = accessToken, id = id)
+    }
+
+    override suspend fun getThisCollectionPhotos(page: Int, id: String): List<CollectionPhotoItem> {
+        return UnsplashApi.create().getThisCollectionPhotos(token = accessToken, page = page, id = id)
     }
 }

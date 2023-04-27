@@ -38,7 +38,7 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
     private val binding by viewBinding(FragmentPhotoDetailsBinding::bind)
     private val viewModel: PhotoDetailsViewModel by viewModels()
 
-    private var photoDetails: PhotoDetails? = null // переменная, которая будет хранить параметр
+    private var photoDetails: PhotoDetails? = null
 
     private val requestDownloadPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
@@ -46,7 +46,7 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
                 photoDetails?.let { downloadPhoto(it) }
             } else {
                 Snackbar.make(
-                    requireView().rootView,
+                    requireView().findViewById(R.id.constraintLayoutPhotoDetails),
                     getString(R.string.permission_is_required_to_download_and_save_the_file),
                     Snackbar.LENGTH_LONG
                 )
@@ -63,7 +63,7 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
                 photoDetails?.let { showUserLocation(it) }
             } else {
                 Snackbar.make(
-                    requireView().rootView,
+                    requireView().findViewById(R.id.constraintLayoutPhotoDetails),
                     getString(R.string.permission_is_required_to_show_location),
                     Snackbar.LENGTH_LONG
                 )

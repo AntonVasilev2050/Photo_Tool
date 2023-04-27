@@ -16,7 +16,11 @@
     <fragment
         android:id="@+id/collectionsFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.CollectionsFragment"
-        android:label="@string/collections_fragment_label" />
+        android:label="@string/collections_fragment_label" >
+        <action
+            android:id="@+id/action_collectionsFragment_to_collectionDetailsFragment"
+            app:destination="@id/collectionDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/userFragment"
@@ -75,5 +79,10 @@
             app:popUpTo="@id/photosFragment"
             app:popUpToInclusive="false"/>
     </fragment>
+    <fragment
+        android:id="@+id/collectionDetailsFragment"
+        android:name="com.avv2050soft.unsplashtool.presentation.CollectionDetailsFragment"
+        android:label="fragment_collection_details"
+        tools:layout="@layout/fragment_collection_details" />
 
 </navigation>

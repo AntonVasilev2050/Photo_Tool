@@ -10,7 +10,7 @@ import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.databinding.FragmentCollectionsBinding
-import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsListItem
+import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsItem
 import com.avv2050soft.unsplashtool.presentation.adapters.CollectionsAdapter
 import com.avv2050soft.unsplashtool.presentation.adapters.PhotosLoadStateAdapter
 import com.avv2050soft.unsplashtool.presentation.utils.showAppbarAndBottomView
@@ -25,16 +25,16 @@ class CollectionsFragment : Fragment(R.layout.fragment_collections) {
     private val binding by viewBinding(FragmentCollectionsBinding::bind)
     private val viewModel: CollectionsViewModel by viewModels()
     private val collectionsAdapter =
-        CollectionsAdapter { collection: CollectionsListItem -> onItemClick(collection) }
+        CollectionsAdapter { collection: CollectionsItem -> onItemClick(collection) }
 
 
-    private fun onItemClick(collectionItem: CollectionsListItem) {
+    private fun onItemClick(collectionsItem: CollectionsItem) {
         val collectionIdBundle = Bundle()
-        collectionIdBundle.putString(COLLECTION_ID_KEY, collectionItem.id)
-//        findNavController().navigate(
-//            R.id.action_collectionsFragment_to_collectionFragment,
-//            collectionIdBundle
-//        )
+        collectionIdBundle.putString(COLLECTION_ID_KEY, collectionsItem.id)
+        findNavController().navigate(
+            R.id.action_collectionsFragment_to_collectionDetailsFragment,
+            collectionIdBundle
+        )
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
