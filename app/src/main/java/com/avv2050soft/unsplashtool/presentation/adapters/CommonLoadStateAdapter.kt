@@ -7,7 +7,7 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.avv2050soft.unsplashtool.databinding.LoadStateBinding
 
-class PhotosLoadStateAdapter : LoadStateAdapter<LoadStateViewHolder>() {
+class CommonLoadStateAdapter : LoadStateAdapter<LoadStateViewHolder>() {
     override fun onBindViewHolder(holder: LoadStateViewHolder, loadState: LoadState) = Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, loadState: LoadState): LoadStateViewHolder {

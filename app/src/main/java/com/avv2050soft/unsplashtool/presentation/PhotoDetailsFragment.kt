@@ -91,7 +91,6 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
                 }
             }
         }
-
     }
 
     private fun showPhotoDetails(photoDetails: PhotoDetails?) {

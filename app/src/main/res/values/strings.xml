@@ -60,4 +60,5 @@
     <string name="photo_details_fragment_label">Photo Details</string>
     <string name="login_fragment_label">Login</string>
     <string name="collection_cover">Collection cover</string>
+    <string name="images_by">images by</string>
 </resources>

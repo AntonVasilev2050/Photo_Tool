@@ -9,7 +9,7 @@ data class CollectionInfo(
     @SerializedName("curated")
     val curated: Boolean,
     @SerializedName("description")
-    val description: Any,
+    val description: String,
     @SerializedName("featured")
     val featured: Boolean,
     @SerializedName("id")

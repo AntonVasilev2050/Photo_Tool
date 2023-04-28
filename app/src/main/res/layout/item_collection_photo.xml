@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="200dp">
+
+    <ImageView
+        android:id="@+id/imageViewCollectionPhoto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        android:contentDescription="@string/photo" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom"
+        android:background="@color/black_transparent">
+
+        <TextView
+            android:id="@+id/textViewCollectionPhotoAuthorName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_bold"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewCollectionAuthorAvatar"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Andrew Porto" />
+
+        <ImageView
+            android:id="@+id/imageViewCollectionAuthorAvatar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:contentDescription="@string/photo_author_avatar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/textViewCollectionPhotoAtLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:text="@string/at_char"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textViewCollectionPhotoAuthorName"
+            app:layout_constraintTop_toBottomOf="@+id/textViewCollectionPhotoAuthorName" />
+
+        <TextView
+            android:id="@+id/textViewCollectionPhotoUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textColor="@color/white"
+            android:textSize="8sp"
+            app:layout_constraintStart_toEndOf="@+id/textViewCollectionPhotoAtLabel"
+            app:layout_constraintTop_toTopOf="@+id/textViewCollectionPhotoAtLabel"
+            tools:text="andrew_porto" />
+
+        <ImageView
+            android:id="@+id/imageViewCollectionPhotoLikeYesNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/likes_icon"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/like_no" />
+
+        <TextView
+            android:id="@+id/textViewCollectionPhotoTotalLikeCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewCollectionPhotoLikeYesNo"
+            app:layout_constraintEnd_toStartOf="@+id/imageViewCollectionPhotoLikeYesNo"
+            app:layout_constraintTop_toTopOf="@+id/imageViewCollectionPhotoLikeYesNo"
+            tools:text="1508" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewCollectionPhotoTotalLikeCount"
+            app:layout_constraintEnd_toStartOf="@+id/textViewCollectionPhotoTotalLikeCount"
+            app:layout_constraintTop_toTopOf="@+id/textViewCollectionPhotoTotalLikeCount"
+            app:srcCompat="@drawable/baseline_download_24_white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

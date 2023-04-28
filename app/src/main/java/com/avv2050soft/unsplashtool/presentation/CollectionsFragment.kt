@@ -12,7 +12,7 @@ import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.databinding.FragmentCollectionsBinding
 import com.avv2050soft.unsplashtool.domain.models.collections.CollectionsItem
 import com.avv2050soft.unsplashtool.presentation.adapters.CollectionsAdapter
-import com.avv2050soft.unsplashtool.presentation.adapters.PhotosLoadStateAdapter
+import com.avv2050soft.unsplashtool.presentation.adapters.CommonLoadStateAdapter
 import com.avv2050soft.unsplashtool.presentation.utils.showAppbarAndBottomView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -25,8 +25,7 @@ class CollectionsFragment : Fragment(R.layout.fragment_collections) {
     private val binding by viewBinding(FragmentCollectionsBinding::bind)
     private val viewModel: CollectionsViewModel by viewModels()
     private val collectionsAdapter =
-        CollectionsAdapter { collection: CollectionsItem -> onItemClick(collection) }
-
+        CollectionsAdapter { collectionsItem: CollectionsItem -> onItemClick(collectionsItem) }
 
     private fun onItemClick(collectionsItem: CollectionsItem) {
         val collectionIdBundle = Bundle()
@@ -40,7 +39,7 @@ class CollectionsFragment : Fragment(R.layout.fragment_collections) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         showAppbarAndBottomView(requireActivity())
-       binding.recyclerViewCollections .adapter = collectionsAdapter.withLoadStateFooter(PhotosLoadStateAdapter())
+       binding.recyclerViewCollections .adapter = collectionsAdapter.withLoadStateFooter(CommonLoadStateAdapter())
 
         binding.swipeRefreshCollections .setOnRefreshListener { collectionsAdapter.refresh() }
 

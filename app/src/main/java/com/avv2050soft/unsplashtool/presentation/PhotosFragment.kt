@@ -15,7 +15,7 @@ import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.databinding.FragmentPhotosBinding
 import com.avv2050soft.unsplashtool.domain.models.photos.Photo
 import com.avv2050soft.unsplashtool.presentation.adapters.PhotosAdapter
-import com.avv2050soft.unsplashtool.presentation.adapters.PhotosLoadStateAdapter
+import com.avv2050soft.unsplashtool.presentation.adapters.CommonLoadStateAdapter
 import com.avv2050soft.unsplashtool.presentation.utils.showAppbarAndBottomView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -45,7 +45,7 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
         showAppbarAndBottomView(requireActivity())
 //        binding.recyclerViewPhotos.setHasFixedSize(true)
         binding.recyclerViewPhotos.adapter =
-            photoAdapter.withLoadStateFooter(PhotosLoadStateAdapter())
+            photoAdapter.withLoadStateFooter(CommonLoadStateAdapter())
 
         binding.swipeRefresh.setOnRefreshListener { photoAdapter.refresh() }
 

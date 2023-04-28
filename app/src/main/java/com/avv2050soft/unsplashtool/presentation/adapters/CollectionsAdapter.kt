@@ -39,7 +39,9 @@ class CollectionsAdapter(
                 textViewAuthorName.text = it.user.name
                 textViewUserName.text = it.user.username
             }
-            root.setOnClickListener { onClick }
+            root.setOnClickListener {
+                item?.let(onClick)
+            }
         }
     }
 }

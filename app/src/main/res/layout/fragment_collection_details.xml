@@ -1,13 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutCollectionDetails"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.CollectionDetailsFragment">
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Hello" />
+        android:id="@+id/textViewCollectionDetailsTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="WOMAN PARADE" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textViewCollectionDetailsTags"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCollectionDetailsTitle"
+        tools:text="#woman #womanrights #strong #unity" />
+
+    <TextView
+        android:id="@+id/textViewCollectionDetailsDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCollectionDetailsTags"
+        tools:text="A powerful collection of powerful images" />
+
+    <TextView
+        android:id="@+id/textViewCollectionDetailsUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCollectionDetailsDescription"
+        tools:text="alexosesso" />
+
+    <TextView
+        android:id="@+id/textViewCollectionDetailsAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="@string/at_char"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/textViewCollectionDetailsUserName"
+        app:layout_constraintTop_toTopOf="@+id/textViewCollectionDetailsUserName"
+        tools:text=" @" />
+
+    <TextView
+        android:id="@+id/textViewCollectionDetailsImagesByLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/roboto"
+        android:text="@string/images_by"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewCollectionDetailsUserName"
+        app:layout_constraintEnd_toStartOf="@+id/textViewCollectionDetailsAt"
+        app:layout_constraintTop_toTopOf="@+id/textViewCollectionDetailsUserName"
+        tools:text="images by" />
+
+    <TextView
+        android:id="@+id/textViewCollectionDetailsTotalPhotosCount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:fontFamily="@font/roboto"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewCollectionDetailsUserName"
+        app:layout_constraintEnd_toStartOf="@+id/textViewCollectionDetailsImagesByLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewCollectionDetailsUserName"
+        tools:text="11" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshCollectionPhotos"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCollectionDetailsUserName">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewCollectionPhotos"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginBottom="4dp"
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:listitem="@layout/item_collection_photo" />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

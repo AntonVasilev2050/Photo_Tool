@@ -11,7 +11,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.databinding.FragmentSearchPhotosBinding
 import com.avv2050soft.unsplashtool.domain.models.photo_search.Result
-import com.avv2050soft.unsplashtool.presentation.adapters.PhotosLoadStateAdapter
+import com.avv2050soft.unsplashtool.presentation.adapters.CommonLoadStateAdapter
 import com.avv2050soft.unsplashtool.presentation.adapters.SearchPhotosAdapter
 import com.avv2050soft.unsplashtool.presentation.utils.showAppbarAndBottomView
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,7 +38,7 @@ class SearchPhotosFragment : Fragment(R.layout.fragment_search_photos) {
         super.onViewCreated(view, savedInstanceState)
         showAppbarAndBottomView(requireActivity())
         binding.recyclerViewSearchPhotos.adapter =
-            searchPhotosAdapter.withLoadStateFooter(PhotosLoadStateAdapter())
+            searchPhotosAdapter.withLoadStateFooter(CommonLoadStateAdapter())
 
         binding.swipeRefresh.setOnRefreshListener { searchPhotosAdapter.refresh() }
 

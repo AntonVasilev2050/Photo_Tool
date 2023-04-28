@@ -83,6 +83,10 @@
         android:id="@+id/collectionDetailsFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.CollectionDetailsFragment"
         android:label="fragment_collection_details"
-        tools:layout="@layout/fragment_collection_details" />
+        tools:layout="@layout/fragment_collection_details" >
+        <action
+            android:id="@+id/action_collectionDetailsFragment_to_photoDetailsFragment"
+            app:destination="@id/photoDetailsFragment" />
+    </fragment>
 
 </navigation>

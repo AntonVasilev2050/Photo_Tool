@@ -36,6 +36,8 @@ class CollectionDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 collectionInfo = unsplashRepository.getThisCollectionInfo(id)
+                _collectionInfoStateFlow.value = collectionInfo
+                Log.d("data_test", "CollectionPhotoInfoC: ${collectionInfo.toString()}")
             } catch (e: Exception) {
                 Log.d("data_test", "Error in VM: ${e.message.toString()}")
             }
@@ -43,6 +45,6 @@ class CollectionDetailsViewModel @Inject constructor(
     }
 
     companion object{
-        var collectionId: String = ""
+        var collectionId: String = "1dTgp8ML_DY"
     }
 }
