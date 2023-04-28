@@ -1,13 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.UserFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/user" />
+    <ImageView
+        android:id="@+id/imageViewUserAvatar"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textViewUserProfileName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewUserAvatar"
+        app:layout_constraintTop_toTopOf="@+id/imageViewUserAvatar"
+        tools:text="Alex Victor" />
+
+    <TextView
+        android:id="@+id/textViewUserProfileAtLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="16dp"
+        android:text=" @"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewUserAvatar"
+        app:layout_constraintStart_toEndOf="@+id/imageViewUserAvatar" />
+
+    <TextView
+        android:id="@+id/textViewUserProfileUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewUserProfileAtLabel"
+        app:layout_constraintStart_toEndOf="@+id/textViewUserProfileAtLabel"
+        app:layout_constraintTop_toTopOf="@+id/textViewUserProfileAtLabel"
+        tools:text="alexosesso" />
+
+    <TextView
+        android:id="@+id/textViewUserProfileDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/imageViewUserAvatar"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewUserAvatar"
+        tools:text="Follow 4 follow, my Insta fans" />
+
+    <ImageView
+        android:id="@+id/imageViewUserProfileLocationIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/location_mark"
+        app:layout_constraintStart_toStartOf="@+id/textViewUserProfileDescription"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserProfileDescription" />
+
+    <TextView
+        android:id="@+id/textViewUserProfileLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewUserProfileLocationIcon"
+        app:layout_constraintStart_toEndOf="@+id/imageViewUserProfileLocationIcon"
+        app:layout_constraintTop_toTopOf="@+id/imageViewUserProfileLocationIcon"
+        tools:text="San Francisco, CA" />
+
+    <ImageView
+        android:id="@+id/imageViewUserProfileEmailIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/baseline_mail_outline_24_black"
+        app:layout_constraintStart_toStartOf="@+id/imageViewUserProfileLocationIcon"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewUserProfileLocationIcon" />
+
+    <TextView
+        android:id="@+id/textViewUserProfileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewUserProfileEmailIcon"
+        app:layout_constraintStart_toEndOf="@+id/imageViewUserProfileEmailIcon"
+        app:layout_constraintTop_toTopOf="@+id/imageViewUserProfileEmailIcon"
+        tools:text="alexosesso@gmail.com" />
+
+    <ImageView
+        android:id="@+id/imageViewUserProfileDownloadIcon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/baseline_download_24"
+        app:layout_constraintStart_toStartOf="@+id/imageViewUserProfileEmailIcon"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewUserProfileEmailIcon" />
+
+    <TextView
+        android:id="@+id/textViewUserProfileDownloads"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imageViewUserProfileDownloadIcon"
+        app:layout_constraintStart_toEndOf="@+id/imageViewUserProfileDownloadIcon"
+        app:layout_constraintTop_toTopOf="@+id/imageViewUserProfileDownloadIcon"
+        tools:text="69" />
+
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:layout_width="409dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        tools:layout_editor_absoluteX="1dp"-->
+<!--        tools:layout_editor_absoluteY="353dp"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/textViewUserProfileDownloads"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        >-->
+
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Monday" />-->
+
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Tuesday" />-->
+
+<!--        <com.google.android.material.tabs.TabItem-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Wednesday" />-->
+<!--    </com.google.android.material.tabs.TabLayout>-->
+
+</androidx.constraintlayout.widget.ConstraintLayout>

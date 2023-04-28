@@ -50,7 +50,7 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
                     getString(R.string.permission_is_required_to_download_and_save_the_file),
                     Snackbar.LENGTH_LONG
                 )
-                    .setAction(getString(R.string.grant_permission)){
+                    .setAction(getString(R.string.grant_permission)) {
                         photoDetails?.let { it1 -> checkDownloadPermission(it1) }
                     }
                     .show()
@@ -67,7 +67,7 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
                     getString(R.string.permission_is_required_to_show_location),
                     Snackbar.LENGTH_LONG
                 )
-                    .setAction(getString(R.string.grant_permission)){
+                    .setAction(getString(R.string.grant_permission)) {
                         photoDetails?.let { it1 -> checkLocationPermission(it1) }
                     }
                     .show()
@@ -188,7 +188,7 @@ class PhotoDetailsFragment : Fragment(R.layout.fragment_photo_details) {
     }
 
     private fun downloadPhoto(photoDetails: PhotoDetails) {
-        val url = photoDetails.urls.raw
+        val url = photoDetails.links.download
         val accessToken = "Bearer ${TokenStorage.accessToken}"
         val request = DownloadManager.Request(Uri.parse(url))
             .addRequestHeader("Authorization", accessToken)
