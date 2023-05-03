@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.databinding.ItemPhotoBinding
 import com.avv2050soft.unsplashtool.domain.models.photos.Photo
@@ -49,6 +50,10 @@ class PhotosAdapter(
                 item?.let(onClick)
             }
         }
+//        первый элемент (position == 0) будет выводиться во всю ширину экрана
+        val layoutParams = holder.itemView.layoutParams as StaggeredGridLayoutManager.LayoutParams
+        layoutParams.isFullSpan = position == 0
+
     }
 }
 
