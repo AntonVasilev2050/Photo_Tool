@@ -61,4 +61,5 @@
     <string name="login_fragment_label">Login</string>
     <string name="collection_cover">Collection cover</string>
     <string name="images_by">images by</string>
+    <string name="top_today">Top today</string>
 </resources>
