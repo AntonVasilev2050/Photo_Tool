@@ -9,6 +9,8 @@ import com.avv2050soft.unsplashtool.domain.models.likedPhoto.LikedPhoto
 import com.avv2050soft.unsplashtool.domain.models.photo_details.PhotoDetails
 import com.avv2050soft.unsplashtool.domain.models.photo_search.Result
 import com.avv2050soft.unsplashtool.domain.models.photos.Photo
+import com.avv2050soft.unsplashtool.domain.models.userinfo.CurrentUserInfo
+import com.avv2050soft.unsplashtool.domain.models.userlikedphotos.UserLikedPhotoItem
 import com.avv2050soft.unsplashtool.domain.repository.UnsplashRepository
 import javax.inject.Inject
 
@@ -46,6 +48,19 @@ class UnsplashRepositoryImpl @Inject constructor() : UnsplashRepository {
     }
 
     override suspend fun getThisCollectionPhotos(page: Int, id: String): List<CollectionPhotoItem> {
-        return UnsplashApi.create().getThisCollectionPhotos(token = accessToken, page = page, id = id)
+        return UnsplashApi.create()
+            .getThisCollectionPhotos(token = accessToken, page = page, id = id)
+    }
+
+    override suspend fun getCurrentUserInfo(): CurrentUserInfo {
+        return UnsplashApi.create().getCurrentUserInfo(token = accessToken)
+    }
+
+    override suspend fun getUserLikedPhotos(
+        username: String,
+        page: Int
+    ): List<UserLikedPhotoItem> {
+        return UnsplashApi.create()
+            .getUserLikedPhotos(token = accessToken, userName = username, page = page)
     }
 }

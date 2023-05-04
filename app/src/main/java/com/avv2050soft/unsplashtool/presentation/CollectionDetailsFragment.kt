@@ -1,7 +1,6 @@
 package com.avv2050soft.unsplashtool.presentation
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -76,19 +75,13 @@ class CollectionDetailsFragment : Fragment(R.layout.fragment_collection_details)
 
         viewModel.thisCollectionPhotos.onEach {
             collectionPhotosAdapter.submitData(it)
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-
-        viewLifecycleOwner.lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.CREATED) {
-                collectionId?.let {
-                    viewModel.getThisCollectionInfo(collectionId)
-                    viewModel.collectionInfoStateFlow.collect {
-                        Log.d("data_test", "CollectionPhotoInfoB: ${it.toString()}")
-                        showCollectionInfo(it)
-                    }
+            collectionId?.let {
+                viewModel.getThisCollectionInfo(collectionId)
+                viewModel.collectionInfoStateFlow.collect {
+                    showCollectionInfo(it)
                 }
             }
-        }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun showCollectionInfo(collectionInfo: CollectionInfo?) {

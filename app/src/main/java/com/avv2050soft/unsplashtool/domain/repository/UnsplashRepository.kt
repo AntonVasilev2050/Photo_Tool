@@ -7,6 +7,8 @@ import com.avv2050soft.unsplashtool.domain.models.likedPhoto.LikedPhoto
 import com.avv2050soft.unsplashtool.domain.models.photo_details.PhotoDetails
 import com.avv2050soft.unsplashtool.domain.models.photo_search.Result
 import com.avv2050soft.unsplashtool.domain.models.photos.Photo
+import com.avv2050soft.unsplashtool.domain.models.userinfo.CurrentUserInfo
+import com.avv2050soft.unsplashtool.domain.models.userlikedphotos.UserLikedPhotoItem
 
 interface UnsplashRepository {
 
@@ -18,4 +20,6 @@ interface UnsplashRepository {
     suspend fun getCollection(page: Int): List<CollectionsItem>
     suspend fun getThisCollectionInfo(id: String) : CollectionInfo
     suspend fun getThisCollectionPhotos(page: Int, id: String) : List<CollectionPhotoItem>
+    suspend fun getCurrentUserInfo() : CurrentUserInfo
+    suspend fun getUserLikedPhotos(username : String, page: Int) : List<UserLikedPhotoItem>
 }

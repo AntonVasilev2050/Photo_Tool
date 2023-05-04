@@ -11,7 +11,7 @@ data class CurrentUserInfo(
     @SerializedName("badge")
     val badge: Any,
     @SerializedName("bio")
-    val bio: Any,
+    val bio: String?,
     @SerializedName("confirmed")
     val confirmed: Boolean,
     @SerializedName("dmca_verification")
@@ -39,7 +39,7 @@ data class CurrentUserInfo(
     @SerializedName("links")
     val links: Links,
     @SerializedName("location")
-    val location: Any,
+    val location: String?,
     @SerializedName("meta")
     val meta: Meta,
     @SerializedName("name")
