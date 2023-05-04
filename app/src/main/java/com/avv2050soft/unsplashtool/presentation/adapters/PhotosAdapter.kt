@@ -30,6 +30,9 @@ class PhotosAdapter(
                 Glide
                     .with(imageViewPhoto.context)
                     .load(it.urls.small)
+                    .placeholder(R.drawable.loading_icon)
+                    .thumbnail(Glide.with(imageViewPhoto.context).load(R.drawable.loading_icon))
+                    .error(R.drawable.error_sing)
                     .into(imageViewPhoto)
                 Glide
                     .with(imageViewAvatar.context)
