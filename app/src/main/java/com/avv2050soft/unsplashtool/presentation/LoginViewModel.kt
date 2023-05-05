@@ -7,8 +7,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.data.auth.AuthRepository
-import com.avv2050soft.unsplashtool.data.repository.DatabaseRepositoryImpl
-import com.avv2050soft.unsplashtool.domain.repository.DatabaseRepository
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.channels.trySendBlocking
 import kotlinx.coroutines.flow.Flow
@@ -23,13 +21,13 @@ import net.openid.appauth.TokenRequest
 class LoginViewModel(application: Application) : AndroidViewModel(application) {
     private val authRepository = AuthRepository()
     private val authService: AuthorizationService = AuthorizationService(getApplication())
-    private val databaseRepository = DatabaseRepositoryImpl(application)
+//    private val databaseRepository = DatabaseRepositoryImpl(application)
 
     private val openAuthPageEventChannel = Channel<Intent>(Channel.BUFFERED)
     private val toastEventChannel = Channel<Int>(Channel.BUFFERED)
     private val authSuccessEventChannel = Channel<Unit>(Channel.BUFFERED)
-    private val logoutPageEventChannel = Channel<Intent>(Channel.BUFFERED)
-    private val logoutCompletedEventChannel = Channel<Unit>(Channel.BUFFERED)
+//    private val logoutPageEventChannel = Channel<Intent>(Channel.BUFFERED)
+//    private val logoutCompletedEventChannel = Channel<Unit>(Channel.BUFFERED)
 
     private val loadingMutableStateFlow = MutableStateFlow(false)
 
@@ -49,11 +47,11 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         toastEventChannel.trySendBlocking(R.string.auth_canceled)
     }
 
-    val logoutPageFlow: Flow<Intent>
-        get() = logoutPageEventChannel.receiveAsFlow()
-
-    val logoutCompletedFlow: Flow<Unit>
-        get() = logoutCompletedEventChannel.receiveAsFlow()
+//    val logoutPageFlow: Flow<Intent>
+//        get() = logoutPageEventChannel.receiveAsFlow()
+//
+//    val logoutCompletedFlow: Flow<Unit>
+//        get() = logoutCompletedEventChannel.receiveAsFlow()
 
     fun onAuthCodeReceived(tokenRequest: TokenRequest) {
 
@@ -84,25 +82,25 @@ class LoginViewModel(application: Application) : AndroidViewModel(application) {
         openAuthPageEventChannel.trySendBlocking(openAuthPageIntent)
     }
 
-    fun logout() {
-        val customTabsIntent = CustomTabsIntent.Builder().build()
+//    fun logout() {
+//        val customTabsIntent = CustomTabsIntent.Builder().build()
+//
+//        val logoutPageIntent = authService.getEndSessionRequestIntent(
+//            authRepository.getEndSessionRequest(),
+//            customTabsIntent
+//        )
+//        viewModelScope.launch {
+//            databaseRepository.deleteAllPhotosFromDb()
+//        }
+//        logoutPageEventChannel.trySendBlocking(logoutPageIntent)
+//    }
 
-        val logoutPageIntent = authService.getEndSessionRequestIntent(
-            authRepository.getEndSessionRequest(),
-            customTabsIntent
-        )
-        viewModelScope.launch {
-            databaseRepository.deleteAllPhotosFromDb()
-        }
-        logoutPageEventChannel.trySendBlocking(logoutPageIntent)
-    }
-
-    fun webLogoutComplete() {
-
-        authRepository.logout()
-
-        logoutCompletedEventChannel.trySendBlocking(Unit)
-    }
+//    fun webLogoutComplete() {
+//
+//        authRepository.logout()
+//
+//        logoutCompletedEventChannel.trySendBlocking(Unit)
+//    }
 
     override fun onCleared() {
         super.onCleared()

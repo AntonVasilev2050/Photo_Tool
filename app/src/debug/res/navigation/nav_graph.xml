@@ -11,6 +11,9 @@
         <action
             android:id="@+id/action_photosFragment_to_photoDetailsFragment"
             app:destination="@id/photoDetailsFragment" />
+        <action
+            android:id="@+id/action_photosFragment_to_searchPhotosFragment"
+            app:destination="@id/searchPhotosFragment" />
     </fragment>
 
     <fragment
@@ -25,7 +28,12 @@
     <fragment
         android:id="@+id/userFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.UserFragment"
-        android:label="@string/user_fragment_label" />
+        android:label="@string/user_fragment_label" >
+        <action
+            android:id="@+id/action_userFragment_to_logoutFragment"
+            app:destination="@id/logoutFragment"
+            app:popUpTo="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.LoginFragment"
@@ -34,8 +42,7 @@
         <action
             android:id="@+id/action_loginFragment_to_photosFragment"
             app:destination="@+id/photosFragment"
-            app:popUpTo="@+id/splashFragment"
-            app:popUpToInclusive="true" />
+            app:popUpTo="@+id/splashFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"
@@ -72,21 +79,33 @@
             android:id="@+id/action_searchPhotosFragment_to_photoDetailsFragment"
             app:destination="@id/photoDetailsFragment"
             app:popUpTo="@id/searchPhotosFragment"
-            app:popUpToInclusive="false" />
+            />
         <action
             android:id="@+id/action_searchPhotosFragment_to_photosFragment"
             app:destination="@id/photosFragment"
             app:popUpTo="@id/photosFragment"
-            app:popUpToInclusive="false"/>
+            />
     </fragment>
     <fragment
         android:id="@+id/collectionDetailsFragment"
         android:name="com.avv2050soft.unsplashtool.presentation.CollectionDetailsFragment"
-        android:label="fragment_collection_details"
+        android:label="@string/collection_photos"
         tools:layout="@layout/fragment_collection_details" >
         <action
             android:id="@+id/action_collectionDetailsFragment_to_photoDetailsFragment"
             app:destination="@id/photoDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/logoutFragment"
+        android:name="com.avv2050soft.unsplashtool.presentation.LogoutFragment"
+        android:label="fragment_logout"
+        tools:layout="@layout/fragment_logout" >
+
+        <action
+            android:id="@+id/action_logoutFragment_to_splashFragment"
+            app:destination="@id/splashFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

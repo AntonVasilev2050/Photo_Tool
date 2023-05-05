@@ -3,10 +3,12 @@ package com.avv2050soft.unsplashtool.presentation
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.appcompat.widget.SearchView.OnCloseListener
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -26,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,12 +71,21 @@ class MainActivity : AppCompatActivity() {
                 return false
             }
         })
+        menu.findItem(R.id.action_logout).isVisible = false
+        menu.findItem(R.id.action_search).isVisible = false
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        NavigationUI.onNavDestinationSelected(item, navController)
-        return super.onOptionsItemSelected(item)
+    override fun onOptionsItemSelected(menuItem: MenuItem): Boolean {
+        NavigationUI.onNavDestinationSelected(menuItem, navController)
+        return when (menuItem.itemId) {
+            R.id.action_logout -> {
+                navController.navigate(R.id.action_userFragment_to_logoutFragment)
+                false
+            }
+
+            else -> super.onOptionsItemSelected(menuItem)
+        }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -81,4 +93,27 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
+
+//    fun updateMenu() {
+//        val menu = binding.toolbar.menu
+//        val searchItem = menu.findItem(R.id.action_search)
+//        val logoutItem = menu.findItem(R.id.action_logout)
+//
+//        when (supportFragmentManager.findFragmentById(R.id.container)?.tag) {
+//            "PhotosFragment" -> {
+//                searchItem.isVisible = false
+//                logoutItem.isVisible = false
+//            }
+//
+//            "CollectionsFragment" -> {
+//                searchItem.isVisible = false
+//                logoutItem.isVisible = false
+//            }
+//
+//            "UserFragment" -> {
+//                searchItem.isVisible = false
+//                logoutItem.isVisible = true
+//            }
+//        }
+//    }
 }

@@ -36,6 +36,5 @@ class AuthRepository {
         TokenStorage.refreshToken = tokens.refreshToken
         TokenStorage.idToken = tokens.idToken
         Log.d("Oauth", "accessT: ${tokens.accessToken} idT: ${tokens.idToken} refrT: ${tokens.refreshToken}")
-//        Timber.tag("Oauth").d("6. Tokens accepted:\n access=${tokens.accessToken}\nrefresh=${tokens.refreshToken}\nidToken=${tokens.idToken}")
     }
 }

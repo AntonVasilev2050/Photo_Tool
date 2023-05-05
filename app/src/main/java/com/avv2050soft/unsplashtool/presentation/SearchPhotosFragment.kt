@@ -1,9 +1,15 @@
 package com.avv2050soft.unsplashtool.presentation
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.fragment.app.Fragment
 import android.view.View
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
@@ -49,6 +55,19 @@ class SearchPhotosFragment : Fragment(R.layout.fragment_search_photos) {
         viewModel.searchPhotos.onEach {
             searchPhotosAdapter.submitData(it)
         }.launchIn(viewLifecycleOwner.lifecycleScope)
+
+        val menuHost: MenuHost = requireActivity()
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                val logoutItem = menu.findItem(R.id.action_logout)
+                logoutItem.isVisible = false
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return false
+            }
+
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
 }

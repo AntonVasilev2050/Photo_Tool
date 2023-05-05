@@ -62,4 +62,6 @@
     <string name="collection_cover">Collection cover</string>
     <string name="images_by">images by</string>
     <string name="top_today">Top today</string>
+    <string name="collection_photos">Collection Photos</string>
+    <string name="logout_menu_item">Logout</string>
 </resources>

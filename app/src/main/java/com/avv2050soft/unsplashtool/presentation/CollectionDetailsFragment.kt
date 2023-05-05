@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -20,7 +18,6 @@ import com.avv2050soft.unsplashtool.presentation.utils.hideAppbarAndBottomView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CollectionDetailsFragment : Fragment(R.layout.fragment_collection_details) {
@@ -37,25 +34,6 @@ class CollectionDetailsFragment : Fragment(R.layout.fragment_collection_details)
             collectionPhotoIdBundle
         )
     }
-
-//    private var collectionInfo: CollectionInfo? = null
-//
-//    private val requestDownloadPermissionLauncher =
-//        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-//            if (isGranted) {
-//                photoDetails?.let { downloadPhoto(it) }
-//            } else {
-//                Snackbar.make(
-//                    requireView().rootView,
-//                    getString(R.string.permission_is_required_to_download_and_save_the_file),
-//                    Snackbar.LENGTH_LONG
-//                )
-//                    .setAction(getString(R.string.grant_permission)) {
-//                        photoDetails?.let { it1 -> checkDownloadPermission(it1) }
-//                    }
-//                    .show()
-//            }
-//        }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -77,8 +55,8 @@ class CollectionDetailsFragment : Fragment(R.layout.fragment_collection_details)
             collectionPhotosAdapter.submitData(it)
             collectionId?.let {
                 viewModel.getThisCollectionInfo(collectionId)
-                viewModel.collectionInfoStateFlow.collect {
-                    showCollectionInfo(it)
+                viewModel.collectionInfoStateFlow.collect {collectionInfo ->
+                    showCollectionInfo(collectionInfo)
                 }
             }
         }.launchIn(viewLifecycleOwner.lifecycleScope)

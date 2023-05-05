@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -13,7 +14,10 @@ import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.data.auth.TokenStorage
+import com.avv2050soft.unsplashtool.data.repository.UnsplashRepositoryImpl
 import com.avv2050soft.unsplashtool.databinding.FragmentLoginBinding
+import com.avv2050soft.unsplashtool.domain.repository.UnsplashRepository
+import com.avv2050soft.unsplashtool.presentation.utils.hideAppbarAndBottomView
 import com.avv2050soft.unsplashtool.presentation.utils.launchAndCollectIn
 import com.avv2050soft.unsplashtool.presentation.utils.toast
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,19 +36,20 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             handleAuthResponseIntent(dataIntent)
         }
 
-    private val logoutResponse = registerForActivityResult(
-        ActivityResultContracts.StartActivityForResult()
-    ) { result ->
-        if (result.resultCode == Activity.RESULT_OK) {
-            viewModel.webLogoutComplete()
-        } else {
-
-            viewModel.webLogoutComplete()
-        }
-    }
+//    private val logoutResponse = registerForActivityResult(
+//        ActivityResultContracts.StartActivityForResult()
+//    ) { result ->
+//        if (result.resultCode == Activity.RESULT_OK) {
+//            viewModel.webLogoutComplete()
+//        } else {
+//
+//            viewModel.webLogoutComplete()
+//        }
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        hideAppbarAndBottomView(requireActivity())
         bindViewModel()
 
     }
@@ -52,9 +57,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private fun bindViewModel() {
 
         binding.buttonLogin.setOnClickListener { viewModel.openLoginPage() }
-        binding.buttonLogout.setOnClickListener {
-            viewModel.logout()
-        }
+
         viewModel.loadingFlow.launchAndCollectIn(viewLifecycleOwner) {
             updateIsLoading(it)
         }
@@ -79,24 +82,25 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 findNavController().navigate(R.id.photosFragment)
             }
 
+            UnsplashRepositoryImpl.accessToken = "Bearer ${TokenStorage.accessToken}"
+
             Log.d(
                 "Oauth",
                 "access: ${TokenStorage.accessToken} id: ${TokenStorage.idToken} refr: ${TokenStorage.refreshToken}"
             )
         }
-        viewModel.logoutPageFlow.launchAndCollectIn(viewLifecycleOwner) {
-            logoutResponse.launch(it)
-        }
+//        viewModel.logoutPageFlow.launchAndCollectIn(viewLifecycleOwner) {
+//            logoutResponse.launch(it)
+//        }
 
-        viewModel.logoutCompletedFlow.launchAndCollectIn(viewLifecycleOwner) {
-
-            findNavController().navigate(R.id.loginFragment)
-        }
+//        viewModel.logoutCompletedFlow.launchAndCollectIn(viewLifecycleOwner) {
+//
+//            findNavController().navigate(R.id.loginFragment)
+//        }
     }
 
     private fun updateIsLoading(isLoading: Boolean) = with(binding) {
         buttonLogin.isVisible = !isLoading
-        buttonLogout.isVisible = !isLoading
         loginProgress.isVisible = isLoading
     }
 

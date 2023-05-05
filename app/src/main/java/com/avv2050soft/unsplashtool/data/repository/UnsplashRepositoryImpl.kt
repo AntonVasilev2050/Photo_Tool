@@ -16,7 +16,9 @@ import javax.inject.Inject
 
 class UnsplashRepositoryImpl @Inject constructor() : UnsplashRepository {
 
-    private val accessToken = "Bearer ${TokenStorage.accessToken}"
+    companion object{
+        var accessToken = "Bearer ${TokenStorage.accessToken}"
+    }
 
     override suspend fun getPhotos(page: Int): List<Photo> {
         return UnsplashApi.create().getPhotos(token = accessToken, page = page)
