@@ -64,4 +64,7 @@
     <string name="top_today">Top today</string>
     <string name="collection_photos">Collection Photos</string>
     <string name="logout_menu_item">Logout</string>
+    <string name="are_you_sure_you_want_to_logout_all_local_data_will_be_deleted">Are you sure you want to logout? All local data will be deleted.</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
 </resources>

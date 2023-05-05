@@ -3,12 +3,10 @@ package com.avv2050soft.unsplashtool.presentation
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
-import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -17,9 +15,12 @@ import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.databinding.ActivityMainBinding
+import com.avv2050soft.unsplashtool.databinding.DialogLogoutBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -80,7 +81,8 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.onNavDestinationSelected(menuItem, navController)
         return when (menuItem.itemId) {
             R.id.action_logout -> {
-                navController.navigate(R.id.action_userFragment_to_logoutFragment)
+                showLogoutDialog()
+//                navController.navigate(R.id.action_userFragment_to_logoutFragment)
                 false
             }
 
@@ -88,32 +90,25 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun showLogoutDialog() {
+        val logoutDialog = BottomSheetDialog(this)
+        val bindingLogoutDialog = DialogLogoutBinding.inflate(layoutInflater)
+        logoutDialog.setContentView(bindingLogoutDialog.root)
+        with(bindingLogoutDialog) {
+            buttonLogoutNo.setOnClickListener {
+                logoutDialog.dismiss()
+            }
+            buttonLogoutYes.setOnClickListener {
+                navController.navigate(R.id.action_userFragment_to_logoutFragment)
+                logoutDialog.dismiss()
+            }
+        }
+        logoutDialog.show()
+    }
+
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_navigation)
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
     }
-
-//    fun updateMenu() {
-//        val menu = binding.toolbar.menu
-//        val searchItem = menu.findItem(R.id.action_search)
-//        val logoutItem = menu.findItem(R.id.action_logout)
-//
-//        when (supportFragmentManager.findFragmentById(R.id.container)?.tag) {
-//            "PhotosFragment" -> {
-//                searchItem.isVisible = false
-//                logoutItem.isVisible = false
-//            }
-//
-//            "CollectionsFragment" -> {
-//                searchItem.isVisible = false
-//                logoutItem.isVisible = false
-//            }
-//
-//            "UserFragment" -> {
-//                searchItem.isVisible = false
-//                logoutItem.isVisible = true
-//            }
-//        }
-//    }
 }

@@ -1,11 +1,9 @@
 package com.avv2050soft.unsplashtool.presentation
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -16,7 +14,6 @@ import com.avv2050soft.unsplashtool.R
 import com.avv2050soft.unsplashtool.data.auth.TokenStorage
 import com.avv2050soft.unsplashtool.data.repository.UnsplashRepositoryImpl
 import com.avv2050soft.unsplashtool.databinding.FragmentLoginBinding
-import com.avv2050soft.unsplashtool.domain.repository.UnsplashRepository
 import com.avv2050soft.unsplashtool.presentation.utils.hideAppbarAndBottomView
 import com.avv2050soft.unsplashtool.presentation.utils.launchAndCollectIn
 import com.avv2050soft.unsplashtool.presentation.utils.toast
@@ -36,22 +33,10 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             handleAuthResponseIntent(dataIntent)
         }
 
-//    private val logoutResponse = registerForActivityResult(
-//        ActivityResultContracts.StartActivityForResult()
-//    ) { result ->
-//        if (result.resultCode == Activity.RESULT_OK) {
-//            viewModel.webLogoutComplete()
-//        } else {
-//
-//            viewModel.webLogoutComplete()
-//        }
-//    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         hideAppbarAndBottomView(requireActivity())
         bindViewModel()
-
     }
 
     private fun bindViewModel() {
@@ -89,14 +74,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                 "access: ${TokenStorage.accessToken} id: ${TokenStorage.idToken} refr: ${TokenStorage.refreshToken}"
             )
         }
-//        viewModel.logoutPageFlow.launchAndCollectIn(viewLifecycleOwner) {
-//            logoutResponse.launch(it)
-//        }
-
-//        viewModel.logoutCompletedFlow.launchAndCollectIn(viewLifecycleOwner) {
-//
-//            findNavController().navigate(R.id.loginFragment)
-//        }
     }
 
     private fun updateIsLoading(isLoading: Boolean) = with(binding) {

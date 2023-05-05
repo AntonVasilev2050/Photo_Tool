@@ -21,16 +21,11 @@ class LogoutViewModel(application: Application) : AndroidViewModel(application) 
     private val authService: AuthorizationService = AuthorizationService(getApplication())
     private val databaseRepository = DatabaseRepositoryImpl(application)
 
-//    private val openAuthPageEventChannel = Channel<Intent>(Channel.BUFFERED)
     private val toastEventChannel = Channel<Int>(Channel.BUFFERED)
-//    private val authSuccessEventChannel = Channel<Unit>(Channel.BUFFERED)
     private val logoutPageEventChannel = Channel<Intent>(Channel.BUFFERED)
     private val logoutCompletedEventChannel = Channel<Unit>(Channel.BUFFERED)
 
     private val loadingMutableStateFlow = MutableStateFlow(false)
-
-//    val openAuthPageFlow: Flow<Intent>
-//        get() = openAuthPageEventChannel.receiveAsFlow()
 
     val loadingFlow: Flow<Boolean>
         get() = loadingMutableStateFlow.asStateFlow()
@@ -38,47 +33,11 @@ class LogoutViewModel(application: Application) : AndroidViewModel(application) 
     val toastFlow: Flow<Int>
         get() = toastEventChannel.receiveAsFlow()
 
-//    val authSuccessFlow: Flow<Unit>
-//        get() = authSuccessEventChannel.receiveAsFlow()
-
-//    fun onAuthCodeFailed(exception: AuthorizationException) {
-//        toastEventChannel.trySendBlocking(R.string.auth_canceled)
-//    }
-
     val logoutPageFlow: Flow<Intent>
         get() = logoutPageEventChannel.receiveAsFlow()
 
     val logoutCompletedFlow: Flow<Unit>
         get() = logoutCompletedEventChannel.receiveAsFlow()
-
-//    fun onAuthCodeReceived(tokenRequest: TokenRequest) {
-//
-//        viewModelScope.launch {
-//            loadingMutableStateFlow.value = true
-//            runCatching {
-//                authRepository.performTokenRequest(
-//                    authService = authService,
-//                    tokenRequest = tokenRequest
-//                )
-//            }.onSuccess {
-//                loadingMutableStateFlow.value = false
-//                authSuccessEventChannel.send(Unit)
-//            }.onFailure {
-//                loadingMutableStateFlow.value = false
-//                toastEventChannel.send(R.string.auth_canceled)
-//            }
-//        }
-//    }
-
-//    fun openLoginPage() {
-//        val customTabsIntent = CustomTabsIntent.Builder().build()
-//        val authRequest = authRepository.getAuthRequest()
-//        val openAuthPageIntent = authService.getAuthorizationRequestIntent(
-//            authRequest,
-//            customTabsIntent
-//        )
-//        openAuthPageEventChannel.trySendBlocking(openAuthPageIntent)
-//    }
 
     fun logout() {
         val customTabsIntent = CustomTabsIntent.Builder().build()
@@ -94,9 +53,7 @@ class LogoutViewModel(application: Application) : AndroidViewModel(application) 
     }
 
     fun webLogoutComplete() {
-
         authRepository.logout()
-
         logoutCompletedEventChannel.trySendBlocking(Unit)
     }
 
