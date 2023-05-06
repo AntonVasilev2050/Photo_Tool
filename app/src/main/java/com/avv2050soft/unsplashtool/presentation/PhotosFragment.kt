@@ -63,6 +63,7 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
             }
 
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         showAppbarAndBottomView(requireActivity())
 
         binding.recyclerViewPhotos.adapter =
@@ -80,7 +81,6 @@ class PhotosFragment : Fragment(R.layout.fragment_photos) {
                 viewModel.loadAllPhotosFromDb()
                 viewModel.photosFromDbStateFlow.collect { listOfPhotos ->
                     photoAdapter.submitData(PagingData.from(listOfPhotos))
-                    Log.d("data_test", "photoListPageDB - ${listOfPhotos.toString()}")
                     Toast.makeText(requireContext(), "Loaded from database", Toast.LENGTH_SHORT)
                         .show()
                 }

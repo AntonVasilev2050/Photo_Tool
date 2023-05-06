@@ -33,6 +33,9 @@
             android:id="@+id/action_userFragment_to_logoutFragment"
             app:destination="@id/logoutFragment"
             app:popUpTo="@id/loginFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_photoDetailsFragment"
+            app:destination="@id/photoDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"

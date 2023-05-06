@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -18,6 +20,7 @@ import com.avv2050soft.unsplashtool.presentation.utils.hideAppbarAndBottomView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class CollectionDetailsFragment : Fragment(R.layout.fragment_collection_details) {
@@ -42,6 +45,18 @@ class CollectionDetailsFragment : Fragment(R.layout.fragment_collection_details)
             CollectionDetailsViewModel.collectionId = collectionId
         }
         hideAppbarAndBottomView(requireActivity())
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.CREATED) {
+                collectionId?.let {
+                    viewModel.getThisCollectionInfo(collectionId)
+                    viewModel.collectionInfoStateFlow.collect { collectionInfo ->
+                        showCollectionInfo(collectionInfo)
+                    }
+                }
+            }
+        }
+
         binding.recyclerViewCollectionPhotos.adapter =
             collectionPhotosAdapter.withLoadStateFooter(CommonLoadStateAdapter())
 
@@ -53,12 +68,12 @@ class CollectionDetailsFragment : Fragment(R.layout.fragment_collection_details)
 
         viewModel.thisCollectionPhotos.onEach {
             collectionPhotosAdapter.submitData(it)
-            collectionId?.let {
-                viewModel.getThisCollectionInfo(collectionId)
-                viewModel.collectionInfoStateFlow.collect {collectionInfo ->
-                    showCollectionInfo(collectionInfo)
-                }
-            }
+//            collectionId?.let {
+//                viewModel.getThisCollectionInfo(collectionId)
+//                viewModel.collectionInfoStateFlow.collect {collectionInfo ->
+//                    showCollectionInfo(collectionInfo)
+//                }
+//            }
         }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 

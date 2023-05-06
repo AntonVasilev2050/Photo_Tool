@@ -67,4 +67,10 @@
     <string name="are_you_sure_you_want_to_logout_all_local_data_will_be_deleted">Are you sure you want to logout? All local data will be deleted.</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
+    <string name="photos_tab_item">Photos</string>
+    <string name="liked_tab_item">Liked</string>
+    <string name="collections_tab_item">Collections</string>
+    <string name="photos_tab">Photos</string>
+    <string name="liked_tab">Liked</string>
+    <string name="collections_tab">Collections</string>
 </resources>

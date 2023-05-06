@@ -41,7 +41,6 @@ class UserViewModel @Inject constructor(
                 Log.d("data_test", "Error in VM: ${e.message.toString()}")
             }
         }
-
     }
 
     companion object{
